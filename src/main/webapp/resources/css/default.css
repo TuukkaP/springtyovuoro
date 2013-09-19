@@ -1,0 +1,122 @@
+html {
+   min-height: 100%;;
+}
+
+body {
+    background: url(noisy.png) rgb(197,222,234); /* Old browsers */
+    background: url(noisy.png) -moz-linear-gradient(top,  rgba(197,222,234,1) 23%, rgba(138,187,215,1) 60%, rgba(6,109,171,1) 100%); /* FF3.6+ */
+    background: url(noisy.png) -webkit-gradient(linear, left top, left bottom, color-stop(23%,rgba(197,222,234,1)), color-stop(60%,rgba(138,187,215,1)), color-stop(100%,rgba(6,109,171,1))); /* Chrome,Safari4+ */
+    background: url(noisy.png) -webkit-linear-gradient(top,  rgba(197,222,234,1) 23%,rgba(138,187,215,1) 60%,rgba(6,109,171,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: url(noisy.png) -o-linear-gradient(top,  rgba(197,222,234,1) 23%,rgba(138,187,215,1) 60%,rgba(6,109,171,1) 100%); /* Opera 11.10+ */
+    background:url(noisy.png)  -ms-linear-gradient(top,  rgba(197,222,234,1) 23%,rgba(138,187,215,1) 60%,rgba(6,109,171,1) 100%); /* IE10+ */
+    background:  linear-gradient(to bottom,  rgba(197,222,234,1) 23%,rgba(138,187,215,1) 60%,rgba(6,109,171,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab',GradientType=0 ); /* IE6-9 */
+    text-align: center;
+    /*background: silver;*/
+    font: 14px 'helvetica', arial, sans-serif;
+}
+/** Structure */
+#header {
+    text-align: left;
+    width: 85%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #12407f;
+    color: #fff;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom: 4px solid #436fac;
+}
+
+#content {
+    
+    text-align: left;
+    width: 85%;
+    margin: 0 auto;
+    text-align:left;
+
+    background: #fff ;
+    padding: 20px;
+}
+
+#footer {
+    text-align: left;
+    width: 85%;
+    margin: 0 auto;
+
+    background: #12407f;
+    color: #fff;
+    padding: 20px;
+    border-top: 4px solid #436fac;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* Links */
+#header a {
+    color: #fff;
+    background: #436fac;
+    padding: 4px 15px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+#header a:hover {
+    background: #4d8add
+}
+
+/** Forms */
+form {
+    font: 100% verdana,arial,sans-serif;
+}
+
+form label { 
+    display: block;
+    float: left; 
+    width: 150px; 
+    padding: 0; 
+    margin: 9px 0 0;
+    text-align: right; 
+}
+
+form input, form select {
+    width: auto;
+    margin: 5px 0 0 10px;
+    border: 1px solid gray;
+    padding: 4px;
+}
+
+form input[type=submit]:hover {
+    cursor: pointer;
+    background: silver;
+}
+
+
+form br {clear: left;}
+
+.UserTable table{
+    border-collapse:collapse;
+    margin:0px;padding:0px;
+}
+
+.UserTable tr,td,th {
+    width:auto;
+    margin:0px;padding:5px;
+    border:1px solid #000000;
+
+}
+
+.OrdersTable table{
+    min-width: 80%;
+    border-collapse:collapse;
+    margin:0px;padding:0px;
+}
+
+.OrdersTable td,th {
+    min-width: 12.5%;
+    margin:0px;padding:5px;
+    border:1px solid #000000;
+
+}
+
