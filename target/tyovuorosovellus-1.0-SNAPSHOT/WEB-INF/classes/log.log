@@ -1,0 +1,33 @@
+16:41:40,565 DEBUG EntityPrinter:121 - tyovuoro.model.Place{bannedUsers=<uninitialized>, id=2, address=, name=Apteekki, orders=<uninitialized>, info=}
+16:41:40,566 DEBUG EntityPrinter:121 - tyovuoro.model.Place{bannedUsers=<uninitialized>, id=3, address=ASDASd, name=Kauppa, orders=<uninitialized>, info=Uuus}
+16:41:40,566 DEBUG EntityPrinter:121 - tyovuoro.model.Place{bannedUsers=<uninitialized>, id=1, address=, name=Pankki, orders=<uninitialized>, info=}
+16:41:40,566 DEBUG EntityPrinter:121 - tyovuoro.model.Order{timestamp=2013-11-20 16:25:48.0, id=52, order_start=1970-01-01T07:00:00.000, order_end=1970-01-01T07:00:00.000, place=tyovuoro.model.Place#1, date=2013-05-01T00:00:00.000, user=tyovuoro.model.User#16}
+16:41:40,567 DEBUG EntityPrinter:121 - tyovuoro.model.User{id=12, username=xzcvzxc, email=zxcvzxcv, address=xczvzxcv, bannedPlaces=<uninitialized>, role=tyovuoro.model.Role#3, lastname=Sukunimi, orders=<uninitialized>, firstname=Etunimi, password=032394e770c865e8b0aab15d27174f1050e2f3d6550347905e5eeccd10df3e8cf6a8e5977c38daac}
+16:41:40,567 DEBUG EntityPrinter:121 - tyovuoro.model.Order{timestamp=2013-11-20 16:25:48.0, id=51, order_start=1970-01-01T07:00:00.000, order_end=1970-01-01T14:00:00.000, place=tyovuoro.model.Place#2, date=2013-05-01T00:00:00.000, user=tyovuoro.model.User#12}
+16:41:40,567 DEBUG EntityPrinter:121 - tyovuoro.model.Order{timestamp=2013-11-20 16:25:48.0, id=50, order_start=1970-01-01T07:00:00.000, order_end=1970-01-01T07:00:00.000, place=tyovuoro.model.Place#2, date=2013-05-01T00:00:00.000, user=tyovuoro.model.User#12}
+16:41:40,610 DEBUG EntityPrinter:121 - tyovuoro.model.User{id=15, username=aapo, email=, address=, bannedPlaces=<uninitialized>, role=tyovuoro.model.Role#1, lastname=Ahdas, orders=<uninitialized>, firstname=Aapo, password=ac0c14fc0c7643f62883f8801f49f8fd2b1902ba256e20e619ec0ecbd58645021fc679b875baa8ee}
+16:41:40,612 DEBUG JdbcTransaction:113 - committed JDBC Connection
+16:41:40,612 DEBUG JdbcTransaction:126 - re-enabling autocommit
+16:41:40,615 DEBUG HibernateTransactionManager:564 - Not closing pre-bound Hibernate Session [SessionImpl(PersistenceContext[entityKeys=[EntityKey[tyovuoro.model.Role#2], EntityKey[tyovuoro.model.Role#1], EntityKey[tyovuoro.model.Role#3], EntityKey[tyovuoro.model.User#16], EntityKey[tyovuoro.model.User#1], EntityKey[tyovuoro.model.Place#2], EntityKey[tyovuoro.model.Place#3], EntityKey[tyovuoro.model.Place#1], EntityKey[tyovuoro.model.Order#52], EntityKey[tyovuoro.model.User#12], EntityKey[tyovuoro.model.Order#51], EntityKey[tyovuoro.model.Order#50], EntityKey[tyovuoro.model.User#15]],collectionKeys=[CollectionKey[tyovuoro.model.User.bannedPlaces#1], CollectionKey[tyovuoro.model.User.orders#12], CollectionKey[tyovuoro.model.User.orders#1], CollectionKey[tyovuoro.model.Place.orders#3], CollectionKey[tyovuoro.model.User.bannedPlaces#16], CollectionKey[tyovuoro.model.Role.userRoles#2], CollectionKey[tyovuoro.model.Role.userRoles#1], CollectionKey[tyovuoro.model.User.bannedPlaces#15], CollectionKey[tyovuoro.model.Role.userRoles#3], CollectionKey[tyovuoro.model.Place.bannedUsers#1], CollectionKey[tyovuoro.model.User.bannedPlaces#12], CollectionKey[tyovuoro.model.Place.bannedUsers#3], CollectionKey[tyovuoro.model.Place.bannedUsers#2], CollectionKey[tyovuoro.model.Place.orders#2], CollectionKey[tyovuoro.model.Place.orders#1], CollectionKey[tyovuoro.model.User.orders#15], CollectionKey[tyovuoro.model.User.orders#16]]];ActionQueue[insertions=[] updates=[] deletions=[] collectionCreations=[] collectionRemovals=[] collectionUpdates=[] collectionQueuedOps=[] unresolvedInsertDependencies=UnresolvedEntityInsertActions[]])] after transaction
+16:41:40,615 DEBUG SessionImpl:566 - Disconnecting session
+16:41:40,616 DEBUG LogicalConnectionImpl:232 - Releasing JDBC connection
+16:41:40,617 DEBUG LogicalConnectionImpl:250 - Released JDBC connection
+16:41:40,617 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'admin/orders/edit'
+16:41:40,618 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+16:41:40,618 DEBUG DispatcherServlet:1178 - Rendering view [org.springframework.web.servlet.view.JstlView: name 'admin/orders/edit'; URL [/WEB-INF/views/admin/orders/edit.jsp]] in DispatcherServlet with name 'Tyovuoro-servlet'
+16:41:40,619 DEBUG JstlView:371 - Added model object 'OrdersForToday' of type [java.util.ArrayList] to request in view with name 'admin/orders/edit'
+16:41:40,619 DEBUG JstlView:371 - Added model object 'id' of type [java.lang.Integer] to request in view with name 'admin/orders/edit'
+16:41:40,619 DEBUG JstlView:371 - Added model object 'placeList' of type [java.util.ArrayList] to request in view with name 'admin/orders/edit'
+16:41:40,620 DEBUG JstlView:371 - Added model object 'order' of type [tyovuoro.model.Order] to request in view with name 'admin/orders/edit'
+16:41:40,620 DEBUG JstlView:371 - Added model object 'vacantUsers' of type [java.util.ArrayList] to request in view with name 'admin/orders/edit'
+16:41:40,620 DEBUG JstlView:371 - Added model object 'org.springframework.validation.BindingResult.order' of type [org.springframework.validation.BeanPropertyBindingResult] to request in view with name 'admin/orders/edit'
+16:41:40,621 DEBUG JstlView:236 - Forwarding to resource [/WEB-INF/views/admin/orders/edit.jsp] in InternalResourceView 'admin/orders/edit'
+16:41:40,749 DEBUG BeanUtils:442 - No property editor [java.lang.IntegerEditor] found for type java.lang.Integer according to 'Editor' suffix convention
+16:41:40,752 DEBUG BeanUtils:442 - No property editor [org.joda.time.LocalDateTimeEditor] found for type org.joda.time.LocalDateTime according to 'Editor' suffix convention
+16:41:40,764 DEBUG DispatcherServlet:913 - Successfully completed request
+16:41:40,799 DEBUG OpenSessionInViewFilter:126 - Closing Hibernate Session in OpenSessionInViewFilter
+16:41:40,804 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'defExpressionHandler'
+16:41:40,805 DEBUG RoleHierarchyImpl:117 - getReachableGrantedAuthorities() - From the roles [ROLE_ADMIN] one can reach [ROLE_ADMIN, ROLE_USER, ROLE_PHARMACY] in zero or more steps.
+16:41:40,805 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'defExpressionHandler'
+16:41:40,821 DEBUG ExceptionTranslationFilter:115 - Chain processed normally
+16:41:40,821 DEBUG SecurityContextPersistenceFilter:97 - SecurityContextHolder now cleared, as request processing completed

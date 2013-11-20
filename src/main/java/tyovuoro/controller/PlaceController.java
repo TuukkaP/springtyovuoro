@@ -54,13 +54,12 @@ public class PlaceController {
 
     @Secured("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/{name}", method = RequestMethod.PUT)
-    public String updateUser(@RequestParam("bannedUsers") User[] bannedUsers, @ModelAttribute Place place) {
+    public String updateUser(@ModelAttribute Place place) {
 //        Set<User> users = new HashSet<User>();
 //        for (String name : bannedUsers) {
 //            users.add(userSer.getUser(name));
 //        }
 //        place.setBannedUsers(users);
-        System.out.println(bannedUsers);
         placeSer.editPlace(place);
         return "redirect:/place/";
     }

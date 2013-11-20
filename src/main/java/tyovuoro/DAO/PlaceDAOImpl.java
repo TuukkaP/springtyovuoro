@@ -39,6 +39,6 @@ public class PlaceDAOImpl implements PlaceDAO {
 
     @Override
     public List getAllPlaces() {
-        return sessionFactory.getCurrentSession().createQuery("from Place p").list();
+        return sessionFactory.getCurrentSession().createQuery("from Place p order by p.name").list();
     }
 }

@@ -36,7 +36,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List getAllUsers() {
-        return sessionFactory.getCurrentSession().createQuery("from User").list();
+        return sessionFactory.getCurrentSession().createQuery("from User u order by u.lastname").list();
     }
 
     @Override
@@ -45,12 +45,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Set getValidPlaces(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Set getBannedPlaces(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getUser(int[] user_ids) {
+        return sessionFactory.getCurrentSession().createQuery("from User u where o.id in (:id)").setParameter("id", user_ids).list();
     }
 }

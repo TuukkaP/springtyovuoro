@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import tyovuoro.model.User;
+import tyovuoro.service.PlaceService;
 import tyovuoro.service.RoleService;
 import tyovuoro.service.UserService;
 
@@ -21,6 +22,8 @@ public class UserController {
     private UserService userSer;
     @Autowired
     private RoleService roleSer;
+    @Autowired
+    private PlaceService placeSer;
 
     @Secured("hasRole('ROLE_ADMIN')")
     @RequestMapping(method = RequestMethod.GET)
@@ -34,6 +37,7 @@ public class UserController {
     public String editUser(@PathVariable String username, ModelMap model) {
         model.addAttribute("user", userSer.getUser(username));
         model.addAttribute("roleList", roleSer.getAllRoles());
+        model.addAttribute("placeList", placeSer.getAllPlaces());
         return "admin/users/edit";
     }
 

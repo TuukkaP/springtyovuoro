@@ -1,7 +1,6 @@
 package tyovuoro.DAO;
 
 import java.util.List;
-import java.util.Set;
 import org.springframework.security.access.annotation.Secured;
 import tyovuoro.model.User;
 
@@ -25,7 +24,5 @@ public interface UserDAO {
     @Secured("hasRole('ROLE_ADMIN')")
     public List getAllUsers();
     
-    public Set getValidPlaces(String username);
-    
-    public Set getBannedPlaces(String username);
+    public List getUser(int[] user_ids);
 }

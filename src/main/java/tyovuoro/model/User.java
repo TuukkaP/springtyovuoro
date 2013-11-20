@@ -1,16 +1,18 @@
 package tyovuoro.model;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "users")
@@ -19,10 +21,9 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
-    @NaturalId
     private String username;
     private String password;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_roles",
             joinColumns = {
         @JoinColumn(name = "user_id", referencedColumnName = "id")},
@@ -33,13 +34,15 @@ public class User {
     private String lastname;
     private String email;
     private String address;
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "banned_users",
-            joinColumns = {
-        @JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {
-        @JoinColumn(name = "place_id", referencedColumnName = "id")})
+    @ManyToMany(mappedBy = "bannedUsers")
+//    @JoinTable(name = "banned_users",
+//            joinColumns = {
+//        @JoinColumn(name = "user_id")},
+//            inverseJoinColumns = {
+//        @JoinColumn(name = "place_id")})
     private Set<Place> bannedPlaces;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    private Set<Order> orders;
 
     public Integer getId() {
         return id;
@@ -113,8 +116,16 @@ public class User {
         this.bannedPlaces = bannedPlaces;
     }
 
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public String toString() {
-        return username + ", " + firstname + " " + lastname ;
+        return lastname + ", " + firstname;
     }
 }

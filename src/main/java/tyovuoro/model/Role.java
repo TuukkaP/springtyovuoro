@@ -1,13 +1,9 @@
 package tyovuoro.model;
 
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,12 +16,12 @@ public class Role {
     private Integer id;
 
     private String role_name;
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_roles",
-            joinColumns = {
-                @JoinColumn(name = "role_id", referencedColumnName = "id")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "user_id", referencedColumnName = "id")})
+    @OneToMany(mappedBy="role")
+//    @JoinTable(name = "user_roles",
+//            joinColumns = {
+//                @JoinColumn(name = "role_id", referencedColumnName = "id")},
+//            inverseJoinColumns = {
+//                @JoinColumn(name = "user_id", referencedColumnName = "id")})
     private Set<User> userRoles;
 
     public int getId() {
