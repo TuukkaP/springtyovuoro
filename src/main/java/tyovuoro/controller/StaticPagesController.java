@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class StaticPagesController {
 
-    @Secured("isAuthenticated()")
     @RequestMapping({"/", "/home"})
     public String showHomePage(ModelMap model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -23,13 +22,11 @@ public class StaticPagesController {
         return "static/home";
     }
 
-    @Secured("isAuthenticated()")
     @RequestMapping({"/info"})
     public String showInfoPage() {
         return "static/info";
     }
 
-    @Secured("hasRole('ROLE_ANONYMOUS')")
     @RequestMapping({"/404"})
     public String errorPage() {
         return "static/error";

@@ -22,6 +22,7 @@
                     <li <%if (pageName.equals("user")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/user">Käyttäjät</a></li>
                     <li <%if (pageName.equals("place")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/place">Paikat</a></li>
                     <li <%if (pageName.equals("info")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/info">Info</a></li>
+                    <li <%if (pageName.equals("order")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/order">Tilaukset</a></li>
                     </sec:authorize>
                 </ul>
             </div>
@@ -34,7 +35,7 @@
             (C) Työvuorosovellus<br>
             </div>-->
         </div>            
-            <script src="http://code.jquery.com/jquery.js"></script>
+            <script src="${pageContext.request.contextPath}/resources/js/jQuery.js"></script>
             <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
     </body>
 </html>

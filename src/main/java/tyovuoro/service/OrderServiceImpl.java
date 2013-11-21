@@ -75,4 +75,9 @@ public class OrderServiceImpl implements OrderService {
     public List getOrdersPlaceAndDayForUser(User user, List<Integer> places, DateTime from, DateTime to) {
         return orderDAO.getOrdersPlaceAndDayForUser(user, places, from.withTimeAtStartOfDay(), to.withTimeAtStartOfDay());
     }
+
+    @Override
+    public List getVacantUsersForDate(DateTime date) {
+        return orderDAO.getVacantUsersForDate(date);
+    }
 }

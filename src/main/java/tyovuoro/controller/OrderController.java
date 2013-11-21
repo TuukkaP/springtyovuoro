@@ -52,9 +52,9 @@ public class OrderController {
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/{date}.{month}.{year}", method = RequestMethod.GET)
-    public String showFromDate(@PathVariable int date, @PathVariable int month, @PathVariable int year, ModelMap model) {
-        DateTime dt = new DateTime(year, month, date, 0, 0);
+    @RequestMapping(value = "/{day}.{month}.{year}", method = RequestMethod.GET)
+    public String showFromDate(@PathVariable int day, @PathVariable int month, @PathVariable int year, ModelMap model) {
+        DateTime dt = new DateTime(year, month, day, 0, 0);
         DateTime first = new DateTime(dt).withDayOfMonth(1);
         DateTime last = new DateTime(first).withDayOfMonth(first.dayOfMonth().getMaximumValue());
         model.addAttribute("dt", dt);
@@ -83,17 +83,23 @@ public class OrderController {
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String createUser(ModelMap model) {
-        model.addAttribute("user", new User());
-        return "admin/users/create";
+    @RequestMapping(value = "/create/{day}.{month}.{year}", method = RequestMethod.GET)
+    public String createOrder(@PathVariable int day, @PathVariable int month, @PathVariable int year, ModelMap model) {
+        DateTime dt = new DateTime(year, month, day, 0, 0);
+        Order order = new Order();
+        order.setDate(dt.toLocalDateTime());
+        model.addAttribute("order", order);
+        model.addAttribute("OrdersForToday", orderSer.getOrdersDate(dt));
+        model.addAttribute("placeList", placeSer.getAllPlaces());
+        model.addAttribute("vacantUsers", orderSer.getVacantUsersForDate(dt));
+        return "admin/orders/create";
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String saveUser(@RequestParam("assigned_role") int id, @ModelAttribute User user) {
-        userSer.saveUser(user);
-        return "redirect:/user/";
+    public String saveOrder(@ModelAttribute Order order) {
+        orderSer.addOrder(order);
+        return "redirect:/order/" + order.getDate().toString("dd.MM.yyyy");
     }
 
     @Secured("hasRole('ROLE_ADMIN')")

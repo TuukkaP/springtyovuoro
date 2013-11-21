@@ -15,20 +15,17 @@ public class SecurityController {
     @Autowired
     private UserDAO userSer;
 
-    @Secured("hasRole('ROLE_ANONYMOUS')")
     @RequestMapping({"/login"})
     public String login(ModelMap model) {
         return "login/login";
     }
 
-    @Secured("hasRole('ROLE_ANONYMOUS')")
     @RequestMapping({"/login-error"})
     public String loginError(ModelMap model) {
         model.addAttribute("error", "Käyttäjätunnus tai salasana väärin");
         return "login/login";
     }
 
-    @Secured("hasRole('ROLE_PHARMACY')")
     @RequestMapping({"/logout"})
     public String logout(ModelMap model) {
         model.addAttribute("message", "Kirjauduit ulos!");

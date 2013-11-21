@@ -29,5 +29,7 @@ public interface OrderService {
     public List getVacantUsersForOrder(Order order);
     
     public List getOrdersPlaceAndDayForUser(User user, List<Integer> places, DateTime  from, DateTime  to);
+    
+    public List getVacantUsersForDate(DateTime date);
 
 }

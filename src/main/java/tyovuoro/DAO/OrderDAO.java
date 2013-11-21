@@ -29,5 +29,7 @@ public interface OrderDAO {
     public void deleteOrder(int id);
     
     public List getVacantUsersForOrder(Order order);
+    
+    public List getVacantUsersForDate(DateTime date);
 
 }

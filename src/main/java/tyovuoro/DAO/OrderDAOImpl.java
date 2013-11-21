@@ -99,4 +99,10 @@ public class OrderDAOImpl implements OrderDAO {
         }
         return list;
     }
+
+    @Override
+    public List getVacantUsersForDate(DateTime date) {
+        return sessionFactory.getCurrentSession().createQuery("from User u where u not in (select o.user from Order o where o.date = :date)")
+                .setParameter("date", date.toLocalDateTime()).list();
+    }
 }

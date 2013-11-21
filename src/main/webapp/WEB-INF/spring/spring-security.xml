@@ -11,12 +11,12 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd
     
     <http use-expressions="true" auto-config="true" access-decision-manager-ref="accessDecisionManager">
         <session-management session-fixation-protection="migrateSession"/>
-
         <!-- Make sure you are not sending login/password in plain text on open channel. Use SSL (https) instead -->
-        <intercept-url pattern="/login*" access="permitAll"/>
+        <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/logout" access="permitAll"/>
         <intercept-url pattern="/resources/**" access="permitAll"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         
         <!-- form login -->
         <form-login 
@@ -24,7 +24,6 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd
             always-use-default-target="true" 
             authentication-failure-url="/login-error" 
             default-target-url="/"
-            login-processing-url="/perform_login" 
         />
 
         <!-- logout -->
@@ -35,7 +34,7 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd
         <!--<remember-me key="rememberMeKey" user-service-ref="userDetailsService"/>-->
     </http>
     
-     <!--<global-method-security secured-annotations="enabled" />-->
+     <!--<global-method-security pre-post-annotations="enabled" authentication-manager-ref="authenticationManager"/>-->
 
     <!--sha256 gorilla 541f42d7542b70062fa430bfccac434186c0c1bb433b45b6f1b76e6f46d4cb60-->
     <beans:bean id="passwordEncoder" 
@@ -43,7 +42,7 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd
         <beans:constructor-arg value="${salt}" />
     </beans:bean>
 
-    <authentication-manager>
+    <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="customUserDetailsService">
             <password-encoder ref="passwordEncoder" />
         </authentication-provider>

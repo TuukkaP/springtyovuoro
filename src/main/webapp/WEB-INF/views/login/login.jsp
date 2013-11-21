@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="container">
-            <form class="form-signin" method="post" action="<c:url value='perform_login' />">
+            <form class="form-signin" method="post" action="<c:url value='j_spring_security_check' />">
                 <h2 class="form-signin-heading">Kirjaudu sisään</h2>
                 <p> ${message}
                     <c:if test="${not empty error}">
