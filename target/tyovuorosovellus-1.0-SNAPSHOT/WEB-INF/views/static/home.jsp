@@ -34,6 +34,8 @@
             <li>Automaattinen buildaus ja testaus (heroku tai jenkins)</li>
             <li>Ulkoasun viilaus</li>
             <li>Apteekin roolitukset ja sivut.</li>
+            <li>Uutta tilausta tehtäessä pitäisi tarkistaa aina paikan valitsemisen jälkeen bannilista. </li>
+            <li>MUISTA LOPUKSI SALAUS HTTPS!! </li>
         </ul>
         ${role}<br>
         <sec:authorize access="hasRole('ROLE_MODERATOR')">

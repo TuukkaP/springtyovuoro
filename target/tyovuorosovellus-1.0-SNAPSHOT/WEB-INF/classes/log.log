@@ -1,30 +1,910 @@
-03:56:55,634 DEBUG Collections:195 - Collection found: [tyovuoro.model.Role.userRoles#3], was: [tyovuoro.model.Role.userRoles#3] (uninitialized)
-03:56:55,635 DEBUG AbstractFlushingEventListener:118 - Flushed: 0 insertions, 0 updates, 0 deletions to 3 objects
-03:56:55,635 DEBUG AbstractFlushingEventListener:125 - Flushed: 0 (re)creations, 0 updates, 0 removals to 3 collections
-03:56:55,637 DEBUG EntityPrinter:114 - Listing entities:
-03:56:55,638 DEBUG EntityPrinter:121 - tyovuoro.model.Role{id=2, userRoles=<uninitialized>, role_name=user}
-03:56:55,638 DEBUG EntityPrinter:121 - tyovuoro.model.Role{id=1, userRoles=<uninitialized>, role_name=admin}
-03:56:55,639 DEBUG EntityPrinter:121 - tyovuoro.model.Role{id=3, userRoles=<uninitialized>, role_name=pharmacy}
-03:56:55,640 DEBUG JdbcTransaction:113 - committed JDBC Connection
-03:56:55,640 DEBUG JdbcTransaction:126 - re-enabling autocommit
-03:56:55,641 DEBUG HibernateTransactionManager:564 - Not closing pre-bound Hibernate Session [SessionImpl(PersistenceContext[entityKeys=[EntityKey[tyovuoro.model.Role#2], EntityKey[tyovuoro.model.Role#1], EntityKey[tyovuoro.model.Role#3]],collectionKeys=[CollectionKey[tyovuoro.model.Role.userRoles#2], CollectionKey[tyovuoro.model.Role.userRoles#1], CollectionKey[tyovuoro.model.Role.userRoles#3]]];ActionQueue[insertions=[] updates=[] deletions=[] collectionCreations=[] collectionRemovals=[] collectionUpdates=[] collectionQueuedOps=[] unresolvedInsertDependencies=UnresolvedEntityInsertActions[]])] after transaction
-03:56:55,641 DEBUG SessionImpl:566 - Disconnecting session
-03:56:55,641 DEBUG LogicalConnectionImpl:232 - Releasing JDBC connection
-03:56:55,642 DEBUG LogicalConnectionImpl:250 - Released JDBC connection
-03:56:55,642 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'admin/users/create'
-03:56:55,642 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.methodSecurityMetadataSourceAdvisor'
-03:56:55,642 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
-03:56:55,643 DEBUG DispatcherServlet:1178 - Rendering view [org.springframework.web.servlet.view.JstlView: name 'admin/users/create'; URL [/WEB-INF/views/admin/users/create.jsp]] in DispatcherServlet with name 'Tyovuoro-servlet'
-03:56:55,643 DEBUG JstlView:371 - Added model object 'roleList' of type [java.util.ArrayList] to request in view with name 'admin/users/create'
-03:56:55,643 DEBUG JstlView:371 - Added model object 'org.springframework.validation.BindingResult.user' of type [org.springframework.validation.BeanPropertyBindingResult] to request in view with name 'admin/users/create'
-03:56:55,643 DEBUG JstlView:371 - Added model object 'user' of type [tyovuoro.model.User] to request in view with name 'admin/users/create'
-03:56:55,643 DEBUG JstlView:236 - Forwarding to resource [/WEB-INF/views/admin/users/create.jsp] in InternalResourceView 'admin/users/create'
-03:56:55,758 DEBUG DispatcherServlet:913 - Successfully completed request
-03:56:55,784 DEBUG OpenSessionInViewFilter:126 - Closing Hibernate Session in OpenSessionInViewFilter
-03:56:55,790 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'defExpressionHandler'
-03:56:55,791 DEBUG RoleHierarchyImpl:117 - getReachableGrantedAuthorities() - From the roles [ROLE_ADMIN] one can reach [ROLE_ADMIN, ROLE_USER, ROLE_PHARMACY] in zero or more steps.
-03:56:55,791 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'defExpressionHandler'
-03:56:55,792 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'defExpressionHandler'
-03:56:55,792 DEBUG RoleHierarchyImpl:117 - getReachableGrantedAuthorities() - From the roles [ROLE_ADMIN] one can reach [ROLE_ADMIN, ROLE_USER, ROLE_PHARMACY] in zero or more steps.
-03:56:55,811 DEBUG ExceptionTranslationFilter:115 - Chain processed normally
-03:56:55,811 DEBUG SecurityContextPersistenceFilter:97 - SecurityContextHolder now cleared, as request processing completed
+04:18:36,458 DEBUG EntityBinder:394 - Import with entity name User
+04:18:36,458 DEBUG EntityBinder:564 - Bind entity tyovuoro.model.User on table users
+04:18:36,460 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=id, insertable=true, updatable=true, unique=false}
+04:18:36,460 DEBUG PropertyBinder:179 - MetadataSourceProcessor property id with lazy=false
+04:18:36,460 DEBUG SimpleValueBinder:331 - building SimpleValue for id
+04:18:36,460 DEBUG PropertyBinder:260 - Building property id
+04:18:36,461 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=address, insertable=true, updatable=true, unique=false}
+04:18:36,461 DEBUG PropertyBinder:179 - MetadataSourceProcessor property address with lazy=false
+04:18:36,461 DEBUG SimpleValueBinder:331 - building SimpleValue for address
+04:18:36,461 DEBUG PropertyBinder:260 - Building property address
+04:18:36,461 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=null, insertable=true, updatable=true, unique=false}
+04:18:36,462 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=element, insertable=true, updatable=true, unique=false}
+04:18:36,462 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=bannedPlaces_KEY, insertable=true, updatable=true, unique=false}
+04:18:36,462 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='bannedPlaces_KEY', referencedColumn='null', mappedBy='null'}
+04:18:36,462 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='bannedUsers'}
+04:18:36,462 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='bannedUsers'}
+04:18:36,463 DEBUG CollectionBinder:400 - Collection role: tyovuoro.model.User.bannedPlaces
+04:18:36,463 DEBUG PropertyBinder:260 - Building property bannedPlaces
+04:18:36,463 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=email, insertable=true, updatable=true, unique=false}
+04:18:36,503 DEBUG PropertyBinder:179 - MetadataSourceProcessor property email with lazy=false
+04:18:36,504 DEBUG SimpleValueBinder:331 - building SimpleValue for email
+04:18:36,504 DEBUG PropertyBinder:260 - Building property email
+04:18:36,504 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=firstname, insertable=true, updatable=true, unique=false}
+04:18:36,505 DEBUG PropertyBinder:179 - MetadataSourceProcessor property firstname with lazy=false
+04:18:36,505 DEBUG SimpleValueBinder:331 - building SimpleValue for firstname
+04:18:36,506 DEBUG PropertyBinder:260 - Building property firstname
+04:18:36,506 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=lastname, insertable=true, updatable=true, unique=false}
+04:18:36,507 DEBUG PropertyBinder:179 - MetadataSourceProcessor property lastname with lazy=false
+04:18:36,507 DEBUG SimpleValueBinder:331 - building SimpleValue for lastname
+04:18:36,507 DEBUG PropertyBinder:260 - Building property lastname
+04:18:36,508 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='user'}
+04:18:36,508 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=orders, insertable=true, updatable=true, unique=false}
+04:18:36,509 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=null, insertable=true, updatable=true, unique=false}
+04:18:36,509 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=element, insertable=true, updatable=true, unique=false}
+04:18:36,510 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=orders_KEY, insertable=true, updatable=true, unique=false}
+04:18:36,510 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='orders_KEY', referencedColumn='null', mappedBy='null'}
+04:18:36,511 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='user'}
+04:18:36,511 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='user'}
+04:18:36,511 DEBUG CollectionBinder:400 - Collection role: tyovuoro.model.User.orders
+04:18:36,512 DEBUG PropertyBinder:260 - Building property orders
+04:18:36,512 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=password, insertable=true, updatable=true, unique=false}
+04:18:36,513 DEBUG PropertyBinder:179 - MetadataSourceProcessor property password with lazy=false
+04:18:36,513 DEBUG SimpleValueBinder:331 - building SimpleValue for password
+04:18:36,514 DEBUG PropertyBinder:260 - Building property password
+04:18:36,514 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='role_id', referencedColumn='id', mappedBy=''}
+04:18:36,514 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=role, insertable=true, updatable=true, unique=false}
+04:18:36,518 DEBUG EntityBinder:794 - Adding secondary table to entity tyovuoro.model.User -> user_roles
+04:18:36,519 DEBUG PropertyBinder:260 - Building property role
+04:18:36,519 DEBUG Ejb3Column:196 - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(users), mappingColumn=username, insertable=true, updatable=true, unique=false}
+04:18:36,520 DEBUG PropertyBinder:179 - MetadataSourceProcessor property username with lazy=false
+04:18:36,520 DEBUG SimpleValueBinder:331 - building SimpleValue for username
+04:18:36,520 DEBUG PropertyBinder:260 - Building property username
+04:18:36,522 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for id
+04:18:36,522 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for date
+04:18:36,529 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for order_end
+04:18:36,529 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for order_start
+04:18:36,554 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for timestamp
+04:18:36,554 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for id
+04:18:36,554 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for address
+04:18:36,554 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for info
+04:18:36,554 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for name
+04:18:36,555 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for id
+04:18:36,555 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for role_name
+04:18:36,555 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for id
+04:18:36,555 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for address
+04:18:36,555 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for email
+04:18:36,555 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for firstname
+04:18:36,556 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for lastname
+04:18:36,556 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for password
+04:18:36,556 DEBUG SimpleValueBinder:369 - Setting SimpleValue typeName for username
+04:18:36,557 DEBUG Configuration:1420 - Processing fk mappings (*ToOne and JoinedSubclass)
+04:18:36,567 DEBUG Ejb3Column:196 - Binding column: Ejb3JoinColumn{logicalColumnName='user_id', referencedColumn='null', mappedBy='null'}
+04:18:36,567 DEBUG Configuration:1603 - Processing extends queue
+04:18:36,568 DEBUG Configuration:1661 - Processing extends queue
+04:18:36,568 DEBUG Configuration:1606 - Processing collection mappings
+04:18:36,568 DEBUG CollectionSecondPass:66 - Second pass for collection: tyovuoro.model.Place.bannedUsers
+04:18:36,569 DEBUG CollectionBinder:1051 - Binding as ManyToMany: tyovuoro.model.Place.bannedUsers
+04:18:36,574 DEBUG CollectionSecondPass:83 - Mapped collection key: place_id, element: user_id
+04:18:36,575 DEBUG CollectionSecondPass:66 - Second pass for collection: tyovuoro.model.Place.orders
+04:18:36,576 DEBUG CollectionBinder:761 - Binding a OneToMany: tyovuoro.model.Place.orders through a foreign key
+04:18:36,577 DEBUG CollectionBinder:790 - Mapping collection: tyovuoro.model.Place.orders -> orders
+04:18:36,577 DEBUG TableBinder:332 - Retrieving property tyovuoro.model.Order.place
+04:18:36,578 DEBUG CollectionSecondPass:83 - Mapped collection key: place_id, one-to-many: tyovuoro.model.Order
+04:18:36,578 DEBUG CollectionSecondPass:66 - Second pass for collection: tyovuoro.model.Role.userRoles
+04:18:36,578 DEBUG CollectionBinder:1050 - Binding a OneToMany: tyovuoro.model.Role.userRoles through an association table
+04:18:36,579 DEBUG TableBinder:332 - Retrieving property tyovuoro.model.User.role
+04:18:36,579 DEBUG CollectionSecondPass:83 - Mapped collection key: role_id, element: user_id
+04:18:36,580 DEBUG CollectionSecondPass:66 - Second pass for collection: tyovuoro.model.User.bannedPlaces
+04:18:36,580 DEBUG CollectionBinder:1051 - Binding as ManyToMany: tyovuoro.model.User.bannedPlaces
+04:18:36,581 DEBUG TableBinder:332 - Retrieving property tyovuoro.model.Place.bannedUsers
+04:18:36,581 DEBUG CollectionSecondPass:83 - Mapped collection key: user_id, element: place_id
+04:18:36,581 DEBUG CollectionSecondPass:66 - Second pass for collection: tyovuoro.model.User.orders
+04:18:36,582 DEBUG CollectionBinder:761 - Binding a OneToMany: tyovuoro.model.User.orders through a foreign key
+04:18:36,582 DEBUG CollectionBinder:790 - Mapping collection: tyovuoro.model.User.orders -> orders
+04:18:36,582 DEBUG TableBinder:332 - Retrieving property tyovuoro.model.Order.user
+04:18:36,583 DEBUG CollectionSecondPass:83 - Mapped collection key: user_id, one-to-many: tyovuoro.model.Order
+04:18:36,583 DEBUG Configuration:1616 - Processing native query and ResultSetMapping mappings
+04:18:36,583 DEBUG Configuration:1624 - Processing association property references
+04:18:36,584 DEBUG Configuration:1646 - Creating tables' unique integer identifiers
+04:18:36,584 DEBUG Configuration:1647 - Processing foreign key constraints
+04:18:36,584 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.User
+04:18:36,604 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.Place
+04:18:36,604 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.Place
+04:18:36,604 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.User
+04:18:36,605 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.Role
+04:18:36,605 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.User
+04:18:36,613 DEBUG SettingsFactory:114 - Automatic flush during beforeCompletion(): disabled
+04:18:36,614 DEBUG SettingsFactory:120 - Automatic session close at end of transaction: disabled
+04:18:36,614 DEBUG SettingsFactory:131 - JDBC batch size: 15
+04:18:36,614 DEBUG SettingsFactory:137 - JDBC batch updates for versioned data: disabled
+04:18:36,614 DEBUG SettingsFactory:147 - Scrollable result sets: enabled
+04:18:36,615 DEBUG SettingsFactory:153 - Wrap result sets: disabled
+04:18:36,615 DEBUG SettingsFactory:159 - JDBC3 getGeneratedKeys(): enabled
+04:18:36,615 DEBUG SettingsFactory:171 - multi-tenancy strategy : NONE
+04:18:36,615 DEBUG SettingsFactory:177 - Connection release mode: auto
+04:18:36,615  INFO TransactionFactoryInitiator:68 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+04:18:36,619 DEBUG SettingsFactory:199 - Using BatchFetchStyle : LEGACY
+04:18:36,619 DEBUG SettingsFactory:218 - Maximum outer join fetch depth: 2
+04:18:36,620 DEBUG SettingsFactory:224 - Default batch fetch size: 1
+04:18:36,620 DEBUG SettingsFactory:230 - Generate SQL with comments: disabled
+04:18:36,620 DEBUG SettingsFactory:236 - Order SQL updates by primary key: disabled
+04:18:36,620 DEBUG SettingsFactory:242 - Order SQL inserts for batching: disabled
+04:18:36,621 DEBUG SettingsFactory:250 - Default null ordering: none
+04:18:36,622 DEBUG SettingsFactory:541 - Query translator: org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory
+04:18:36,624  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+04:18:36,624 DEBUG SettingsFactory:260 - Query language substitutions: {}
+04:18:36,625 DEBUG SettingsFactory:266 - JPA-QL strict compliance: disabled
+04:18:36,625 DEBUG SettingsFactory:274 - Second-level cache: enabled
+04:18:36,625 DEBUG SettingsFactory:280 - Query cache: disabled
+04:18:36,625 DEBUG SettingsFactory:481 - Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
+04:18:36,626 DEBUG SettingsFactory:491 - org.hibernate.cache.internal.NoCachingRegionFactory did not provide constructor accepting java.util.Properties; attempting no-arg constructor.
+04:18:36,627 DEBUG SettingsFactory:295 - Optimize cache for minimal puts: disabled
+04:18:36,627 DEBUG SettingsFactory:310 - Structured second-level cache entries: disabled
+04:18:36,627 DEBUG SettingsFactory:320 - Second-level cache direct-reference entries: disabled
+04:18:36,627 DEBUG SettingsFactory:328 - Statistics: disabled
+04:18:36,627 DEBUG SettingsFactory:334 - Deleted entity synthetic identifier rollback: disabled
+04:18:36,628 DEBUG SettingsFactory:358 - Default entity-mode: pojo
+04:18:36,628 DEBUG SettingsFactory:364 - Named query checking : enabled
+04:18:36,628 DEBUG SettingsFactory:370 - Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+04:18:36,628 DEBUG SettingsFactory:388 - Allow initialization of lazy state outside session : : disabled
+04:18:36,628 DEBUG SettingsFactory:398 - JTA Track by Thread: enabled
+04:18:36,639 DEBUG SessionFactoryImpl:225 - Building session factory
+04:18:36,649 DEBUG SessionFactoryImpl:277 - Session factory constructed with filter configurations : {}
+04:18:36,650 DEBUG SessionFactoryImpl:278 - Instantiating session factory with properties: {java.vendor=Oracle Corporation, sun.java.launcher=SUN_STANDARD, catalina.base=C:\Users\tuukka\AppData\Roaming\NetBeans\7.4\apache-tomcat-7.0.34.0_base, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, catalina.useNaming=true, os.name=Windows 7, sun.boot.class.path=C:\Program Files\Java\jdk1.7.0_21\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_21\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_21\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.7.0_21\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_21\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_21\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_21\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_21\jre\classes, java.util.logging.config.file=C:\Users\tuukka\AppData\Roaming\NetBeans\7.4\apache-tomcat-7.0.34.0_base\conf\logging.properties, user.country.format=FI, hibernate.current_session_context_class=org.springframework.orm.hibernate4.SpringSessionContext, sun.desktop=windows, java.vm.specification.vendor=Oracle Corporation, java.runtime.version=1.7.0_21-b11, user.name=tuukka, shared.loader=, user.language.format=fi, tomcat.util.buf.StringCache.byte.enabled=true, user.language=en, java.naming.factory.initial=org.apache.naming.java.javaURLContextFactory, sun.boot.library.path=C:\Program Files\Java\jdk1.7.0_21\jre\bin, webapp.root=C:\Users\tuukka\Documents\NetBeansProjects\tyovuorosovellus\target\tyovuorosovellus-1.0-SNAPSHOT\, java.version=1.7.0_21, java.util.logging.manager=org.apache.juli.ClassLoaderLogManager, user.timezone=Europe/Helsinki, sun.arch.data.model=64, java.endorsed.dirs=C:\Program Files\Apache Software Foundation\Apache Tomcat 7.0.34\endorsed, sun.cpu.isalist=amd64, sun.jnu.encoding=Cp1252, file.encoding.pkg=sun.io, package.access=sun.,org.apache.catalina.,org.apache.coyote.,org.apache.tomcat.,org.apache.jasper., file.separator=\, java.specification.name=Java Platform API Specification, java.class.version=51.0, user.country=US, java.home=C:\Program Files\Java\jdk1.7.0_21\jre, java.vm.info=mixed mode, os.version=6.1, hibernate.connection.datasource=org.springframework.jdbc.datasource.DriverManagerDataSource@434794b5, path.separator=;, java.vm.version=23.21-b01, user.variant=, jboss.i18n.generate-proxies=true, java.awt.printerjob=sun.awt.windows.WPrinterJob, sun.io.unicode.encoding=UnicodeLittle, tomcat.util.scan.DefaultJarScanner.jarsToSkip=bootstrap.jar,commons-daemon.jar,tomcat-juli.jar,annotations-api.jar,el-api.jar,jsp-api.jar,servlet-api.jar,catalina.jar,catalina-ant.jar,catalina-ha.jar,catalina-tribes.jar,jasper.jar,jasper-el.jar,ecj-*.jar,tomcat-api.jar,tomcat-util.jar,tomcat-coyote.jar,tomcat-dbcp.jar,tomcat-jni.jar,tomcat-spdy.jar,tomcat-i18n-en.jar,tomcat-i18n-es.jar,tomcat-i18n-fr.jar,tomcat-i18n-ja.jar,tomcat-juli-adapters.jar,catalina-jmx-remote.jar,catalina-ws.jar,tomcat-jdbc.jar,commons-beanutils*.jar,commons-codec*.jar,commons-collections*.jar,commons-dbcp*.jar,commons-digester*.jar,commons-fileupload*.jar,commons-httpclient*.jar,commons-io*.jar,commons-lang*.jar,commons-logging*.jar,commons-math*.jar,commons-pool*.jar,jstl.jar,geronimo-spec-jaxrpc*.jar,wsdl4j*.jar,ant.jar,ant-junit*.jar,aspectj*.jar,jmx.jar,h2*.jar,hibernate*.jar,httpclient*.jar,jmx-tools.jar,jta*.jar,log4j*.jar,mail*.jar,slf4j*.jar,xercesImpl.jar,xmlParserAPIs.jar,xml-apis.jar,access-bridge.jar,access-bridge-64.jar,dnsns.jar,jaccess.jar,ldapsec.jar,localedata.jar,sunjce_provider.jar,sunmscapi.jar,sunpkcs11.jar,jhall.jar,tools.jar,sunec.jar,zipfs.jar,gnome-java-bridge.jar,pulse-java.jar,apple_provider.jar,AppleScriptEngine.jar,CoreAudio.jar,dns_sd.jar,j3daudio.jar,j3dcore.jar,j3dutils.jar,jai_core.jar,jai_codec.jar,mlibwrapper_jai.jar,MRJToolkit.jar,vecmath.jar,junit.jar,junit-*.jar,ant-launcher.jar, awt.toolkit=sun.awt.windows.WToolkit, package.definition=sun.,java.,org.apache.catalina.,org.apache.coyote.,org.apache.tomcat.,org.apache.jasper., user.script=, java.naming.factory.url.pkgs=org.apache.naming, user.home=C:\Users\tuukka, org.apache.catalina.startup.ContextConfig.jarsToSkip=, java.specification.vendor=Oracle Corporation, hibernate.hbm2ddl.auto=update, hibernate.classLoader.application=WebappClassLoader
+  context: /tyovuorosovellus
+  delegate: false
+  repositories:
+    /WEB-INF/classes/
+----------> Parent Classloader:
+org.apache.catalina.loader.StandardClassLoader@72cbe322
+, java.library.path=C:\Program Files\Java\jdk1.7.0_21\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\EasyPHP-DevServer-13.1VC11\binaries\php\php_runningversion;C:\Python33\;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Windows Live\Shared;C:\Users\tuukka\AppData\Local\Smartbar\Application\;C:\Users\tuukka\AppData\Local\Smartbar\Application\;C:\Program Files\TortoiseSVN\bin;C:\Ruby193\bin;C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.0.5\bin;C:\Program Files\Java\jdk1.7.0_07\bin;., java.vendor.url=http://java.oracle.com/, org.apache.catalina.startup.TldConfig.jarsToSkip=, java.vm.vendor=Oracle Corporation, hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect, common.loader=C:\Users\tuukka\AppData\Roaming\NetBeans\7.4\apache-tomcat-7.0.34.0_base/lib,C:\Users\tuukka\AppData\Roaming\NetBeans\7.4\apache-tomcat-7.0.34.0_base/lib/*.jar,C:\Program Files\Apache Software Foundation\Apache Tomcat 7.0.34/lib,C:\Program Files\Apache Software Foundation\Apache Tomcat 7.0.34/lib/*.jar,C:\Users\tuukka\AppData\Roaming\NetBeans\7.4\apache-tomcat-7.0.34.0_base/nblib/*.jar, java.runtime.name=Java(TM) SE Runtime Environment, sun.java.command=org.apache.catalina.startup.Bootstrap start, java.class.path=C:\Program Files\Apache Software Foundation\Apache Tomcat 7.0.34\bin\bootstrap.jar;C:\Program Files\Apache Software Foundation\Apache Tomcat 7.0.34\bin\tomcat-juli.jar, hibernate.bytecode.use_reflection_optimizer=false, java.vm.specification.name=Java Virtual Machine Specification, java.vm.specification.version=1.7, catalina.home=C:\Program Files\Apache Software Foundation\Apache Tomcat 7.0.34, sun.cpu.endian=little, sun.os.patch.level=Service Pack 1, java.io.tmpdir=C:\Users\tuukka\AppData\Roaming\NetBeans\7.4\apache-tomcat-7.0.34.0_base\temp, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, server.loader=, java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment, os.arch=amd64, java.ext.dirs=C:\Program Files\Java\jdk1.7.0_21\jre\lib\ext;C:\Windows\Sun\Java\lib\ext, user.dir=C:\Program Files\Apache Software Foundation\Apache Tomcat 7.0.34\bin, line.separator=
+, java.vm.name=Java HotSpot(TM) 64-Bit Server VM, file.encoding=Cp1252, java.specification.version=1.7, hibernate.show_sql=true}
+04:18:36,664 DEBUG DefaultIdentifierGeneratorFactory:107 - Setting dialect [org.hibernate.dialect.MySQLInnoDBDialect]
+04:18:36,664 DEBUG DefaultIdentifierGeneratorFactory:107 - Setting dialect [org.hibernate.dialect.MySQLInnoDBDialect]
+04:18:36,665 DEBUG DefaultIdentifierGeneratorFactory:107 - Setting dialect [org.hibernate.dialect.MySQLInnoDBDialect]
+04:18:36,665 DEBUG DefaultIdentifierGeneratorFactory:107 - Setting dialect [org.hibernate.dialect.MySQLInnoDBDialect]
+04:18:36,749 DEBUG AbstractEntityPersister:3592 - Static SQL for entity: tyovuoro.model.Role
+04:18:36,750 DEBUG AbstractEntityPersister:3597 -  Version select: select id from roles where id =?
+04:18:36,750 DEBUG AbstractEntityPersister:3600 -  Snapshot select: select role_.id, role_.role_name as role2_3_ from roles role_ where role_.id=?
+04:18:36,750 DEBUG AbstractEntityPersister:3603 -  Insert 0: insert into roles (role_name, id) values (?, ?)
+04:18:36,750 DEBUG AbstractEntityPersister:3604 -  Update 0: update roles set role_name=? where id=?
+04:18:36,750 DEBUG AbstractEntityPersister:3605 -  Delete 0: delete from roles where id=?
+04:18:36,751 DEBUG AbstractEntityPersister:3608 -  Identity insert: insert into roles (role_name) values (?)
+04:18:36,754 DEBUG AbstractEntityPersister:3592 - Static SQL for entity: tyovuoro.model.Order
+04:18:36,754 DEBUG AbstractEntityPersister:3597 -  Version select: select id from orders where id =?
+04:18:36,754 DEBUG AbstractEntityPersister:3600 -  Snapshot select: select order_.id, order_.date as date2_1_, order_.order_end as order3_1_, order_.order_start as order4_1_, order_.place_id as place6_1_, order_.timestamp as timestam5_1_, order_.user_id as user7_1_ from orders order_ where order_.id=?
+04:18:36,754 DEBUG AbstractEntityPersister:3603 -  Insert 0: insert into orders (date, order_end, order_start, place_id, timestamp, user_id, id) values (?, ?, ?, ?, ?, ?, ?)
+04:18:36,755 DEBUG AbstractEntityPersister:3604 -  Update 0: update orders set date=?, order_end=?, order_start=?, place_id=?, timestamp=?, user_id=? where id=?
+04:18:36,755 DEBUG AbstractEntityPersister:3605 -  Delete 0: delete from orders where id=?
+04:18:36,755 DEBUG AbstractEntityPersister:3608 -  Identity insert: insert into orders (date, order_end, order_start, place_id, timestamp, user_id) values (?, ?, ?, ?, ?, ?)
+04:18:36,758 DEBUG AbstractEntityPersister:3592 - Static SQL for entity: tyovuoro.model.Place
+04:18:36,758 DEBUG AbstractEntityPersister:3597 -  Version select: select id from places where id =?
+04:18:36,758 DEBUG AbstractEntityPersister:3600 -  Snapshot select: select place_.id, place_.address as address2_2_, place_.info as info3_2_, place_.name as name4_2_ from places place_ where place_.id=?
+04:18:36,758 DEBUG AbstractEntityPersister:3603 -  Insert 0: insert into places (address, info, name, id) values (?, ?, ?, ?)
+04:18:36,758 DEBUG AbstractEntityPersister:3604 -  Update 0: update places set address=?, info=?, name=? where id=?
+04:18:36,759 DEBUG AbstractEntityPersister:3605 -  Delete 0: delete from places where id=?
+04:18:36,759 DEBUG AbstractEntityPersister:3608 -  Identity insert: insert into places (address, info, name) values (?, ?, ?)
+04:18:36,763 DEBUG AbstractEntityPersister:3592 - Static SQL for entity: tyovuoro.model.User
+04:18:36,764 DEBUG AbstractEntityPersister:3597 -  Version select: select id from users where id =?
+04:18:36,764 DEBUG AbstractEntityPersister:3600 -  Snapshot select: select user_.id, user_.address as address2_5_, user_.email as email3_5_, user_.firstname as firstnam4_5_, user_.lastname as lastname5_5_, user_.password as password6_5_, user_.username as username7_5_, user_1_.role_id as role1_4_ from users user_ left outer join user_roles user_1_ on user_.id=user_1_.user_id where user_.id=?
+04:18:36,764 DEBUG AbstractEntityPersister:3603 -  Insert 0: insert into users (address, email, firstname, lastname, password, username, id) values (?, ?, ?, ?, ?, ?, ?)
+04:18:36,764 DEBUG AbstractEntityPersister:3604 -  Update 0: update users set address=?, email=?, firstname=?, lastname=?, password=?, username=? where id=?
+04:18:36,764 DEBUG AbstractEntityPersister:3605 -  Delete 0: delete from users where id=?
+04:18:36,764 DEBUG AbstractEntityPersister:3603 -  Insert 1: insert into user_roles (role_id, user_id) values (?, ?)
+04:18:36,765 DEBUG AbstractEntityPersister:3604 -  Update 1: update user_roles set role_id=? where user_id=?
+04:18:36,765 DEBUG AbstractEntityPersister:3605 -  Delete 1: delete from user_roles where user_id=?
+04:18:36,765 DEBUG AbstractEntityPersister:3608 -  Identity insert: insert into users (address, email, firstname, lastname, password, username) values (?, ?, ?, ?, ?, ?)
+04:18:36,771 DEBUG AbstractCollectionPersister:665 - Static SQL for collection: tyovuoro.model.User.orders
+04:18:36,772 DEBUG AbstractCollectionPersister:666 -  Row insert: update orders set user_id=? where id=?
+04:18:36,772 DEBUG AbstractCollectionPersister:667 -  Row update: update orders set  where id=?
+04:18:36,772 DEBUG AbstractCollectionPersister:668 -  Row delete: update orders set user_id=null where user_id=? and id=?
+04:18:36,772 DEBUG AbstractCollectionPersister:669 -  One-shot delete: update orders set user_id=null where user_id=?
+04:18:36,773 DEBUG AbstractCollectionPersister:665 - Static SQL for collection: tyovuoro.model.Role.userRoles
+04:18:36,773 DEBUG AbstractCollectionPersister:666 -  Row insert: insert into user_roles (role_id, user_id) values (?, ?)
+04:18:36,774 DEBUG AbstractCollectionPersister:667 -  Row update: update user_roles set user_id=? where role_id=? and user_id=?
+04:18:36,774 DEBUG AbstractCollectionPersister:668 -  Row delete: delete from user_roles where role_id=? and user_id=?
+04:18:36,774 DEBUG AbstractCollectionPersister:669 -  One-shot delete: delete from user_roles where role_id=?
+04:18:36,774 DEBUG AbstractCollectionPersister:665 - Static SQL for collection: tyovuoro.model.Place.bannedUsers
+04:18:36,774 DEBUG AbstractCollectionPersister:666 -  Row insert: insert into banned_users (place_id, user_id) values (?, ?)
+04:18:36,774 DEBUG AbstractCollectionPersister:667 -  Row update: update banned_users set user_id=? where place_id=? and user_id=?
+04:18:36,775 DEBUG AbstractCollectionPersister:668 -  Row delete: delete from banned_users where place_id=? and user_id=?
+04:18:36,775 DEBUG AbstractCollectionPersister:669 -  One-shot delete: delete from banned_users where place_id=?
+04:18:36,806 DEBUG AbstractCollectionPersister:665 - Static SQL for collection: tyovuoro.model.Place.orders
+04:18:36,806 DEBUG AbstractCollectionPersister:666 -  Row insert: update orders set place_id=? where id=?
+04:18:36,806 DEBUG AbstractCollectionPersister:667 -  Row update: update orders set  where id=?
+04:18:36,807 DEBUG AbstractCollectionPersister:668 -  Row delete: update orders set place_id=null where place_id=? and id=?
+04:18:36,807 DEBUG AbstractCollectionPersister:669 -  One-shot delete: update orders set place_id=null where place_id=?
+04:18:36,807 DEBUG AbstractCollectionPersister:665 - Static SQL for collection: tyovuoro.model.User.bannedPlaces
+04:18:36,807 DEBUG AbstractCollectionPersister:666 -  Row insert: insert into banned_users (user_id, place_id) values (?, ?)
+04:18:36,807 DEBUG AbstractCollectionPersister:667 -  Row update: update banned_users set place_id=? where user_id=? and place_id=?
+04:18:36,807 DEBUG AbstractCollectionPersister:668 -  Row delete: delete from banned_users where user_id=? and place_id=?
+04:18:36,808 DEBUG AbstractCollectionPersister:669 -  One-shot delete: delete from banned_users where user_id=?
+04:18:36,822 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [NONE]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=?
+04:18:36,823 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [READ]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=?
+04:18:36,823 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [UPGRADE]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=? for update
+04:18:36,823 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [UPGRADE_NOWAIT]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=? for update
+04:18:36,823 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [FORCE]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=? for update
+04:18:36,824 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [PESSIMISTIC_READ]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=? lock in share mode
+04:18:36,824 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [PESSIMISTIC_WRITE]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=? for update
+04:18:36,824 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [PESSIMISTIC_FORCE_INCREMENT]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=? for update
+04:18:36,824 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [OPTIMISTIC]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=?
+04:18:36,825 DEBUG Loader:123 - Static select for entity tyovuoro.model.Role [OPTIMISTIC_FORCE_INCREMENT]: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=?
+04:18:36,830 DEBUG Loader:56 - Static select for action ACTION_MERGE on entity tyovuoro.model.Role: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=?
+04:18:36,830 DEBUG Loader:56 - Static select for action ACTION_REFRESH on entity tyovuoro.model.Role: select role0_.id as id1_3_0_, role0_.role_name as role2_3_0_ from roles role0_ where role0_.id=?
+04:18:36,832 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [NONE]: select order0_.id as id1_1_3_, order0_.date as date2_1_3_, order0_.order_end as order3_1_3_, order0_.order_start as order4_1_3_, order0_.place_id as place6_1_3_, order0_.timestamp as timestam5_1_3_, order0_.user_id as user7_1_3_, place1_.id as id1_2_0_, place1_.address as address2_2_0_, place1_.info as info3_2_0_, place1_.name as name4_2_0_, user2_.id as id1_5_1_, user2_.address as address2_5_1_, user2_.email as email3_5_1_, user2_.firstname as firstnam4_5_1_, user2_.lastname as lastname5_5_1_, user2_.password as password6_5_1_, user2_.username as username7_5_1_, user2_1_.role_id as role1_4_1_, role3_.id as id1_3_2_, role3_.role_name as role2_3_2_ from orders order0_ left outer join places place1_ on order0_.place_id=place1_.id left outer join users user2_ on order0_.user_id=user2_.id left outer join user_roles user2_1_ on user2_.id=user2_1_.user_id left outer join roles role3_ on user2_1_.role_id=role3_.id where order0_.id=?
+04:18:36,856 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [READ]: select order0_.id as id1_1_3_, order0_.date as date2_1_3_, order0_.order_end as order3_1_3_, order0_.order_start as order4_1_3_, order0_.place_id as place6_1_3_, order0_.timestamp as timestam5_1_3_, order0_.user_id as user7_1_3_, place1_.id as id1_2_0_, place1_.address as address2_2_0_, place1_.info as info3_2_0_, place1_.name as name4_2_0_, user2_.id as id1_5_1_, user2_.address as address2_5_1_, user2_.email as email3_5_1_, user2_.firstname as firstnam4_5_1_, user2_.lastname as lastname5_5_1_, user2_.password as password6_5_1_, user2_.username as username7_5_1_, user2_1_.role_id as role1_4_1_, role3_.id as id1_3_2_, role3_.role_name as role2_3_2_ from orders order0_ left outer join places place1_ on order0_.place_id=place1_.id left outer join users user2_ on order0_.user_id=user2_.id left outer join user_roles user2_1_ on user2_.id=user2_1_.user_id left outer join roles role3_ on user2_1_.role_id=role3_.id where order0_.id=?
+04:18:36,857 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [UPGRADE]: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=? for update
+04:18:36,857 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [UPGRADE_NOWAIT]: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=? for update
+04:18:36,857 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [FORCE]: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=? for update
+04:18:36,857 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [PESSIMISTIC_READ]: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=? lock in share mode
+04:18:36,858 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [PESSIMISTIC_WRITE]: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=? for update
+04:18:36,858 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [PESSIMISTIC_FORCE_INCREMENT]: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=? for update
+04:18:36,858 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [OPTIMISTIC]: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=?
+04:18:36,859 DEBUG Loader:123 - Static select for entity tyovuoro.model.Order [OPTIMISTIC_FORCE_INCREMENT]: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=?
+04:18:36,859 DEBUG Loader:56 - Static select for action ACTION_MERGE on entity tyovuoro.model.Order: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=?
+04:18:36,906 DEBUG Loader:56 - Static select for action ACTION_REFRESH on entity tyovuoro.model.Order: select order0_.id as id1_1_0_, order0_.date as date2_1_0_, order0_.order_end as order3_1_0_, order0_.order_start as order4_1_0_, order0_.place_id as place6_1_0_, order0_.timestamp as timestam5_1_0_, order0_.user_id as user7_1_0_ from orders order0_ where order0_.id=?
+04:18:36,907 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [NONE]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=?
+04:18:36,907 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [READ]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=?
+04:18:36,908 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [UPGRADE]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=? for update
+04:18:36,909 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [UPGRADE_NOWAIT]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=? for update
+04:18:36,909 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [FORCE]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=? for update
+04:18:36,910 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [PESSIMISTIC_READ]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=? lock in share mode
+04:18:36,910 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [PESSIMISTIC_WRITE]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=? for update
+04:18:36,911 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [PESSIMISTIC_FORCE_INCREMENT]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=? for update
+04:18:36,911 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [OPTIMISTIC]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=?
+04:18:36,912 DEBUG Loader:123 - Static select for entity tyovuoro.model.Place [OPTIMISTIC_FORCE_INCREMENT]: select place0_.id as id1_2_0_, place0_.address as address2_2_0_, place0_.info as info3_2_0_, place0_.name as name4_2_0_ from places place0_ where place0_.id=?
+04:18:36,916 DEBUG Loader:56 - Static select for action ACTION_MERGE on entity tyovuoro.model.Place: select place0_.id as id1_2_1_, place0_.address as address2_2_1_, place0_.info as info3_2_1_, place0_.name as name4_2_1_, banneduser1_.place_id as place1_2_3_, user2_.id as user2_0_3_, user2_.id as id1_5_0_, user2_.address as address2_5_0_, user2_.email as email3_5_0_, user2_.firstname as firstnam4_5_0_, user2_.lastname as lastname5_5_0_, user2_.password as password6_5_0_, user2_.username as username7_5_0_, user2_1_.role_id as role1_4_0_ from places place0_ left outer join banned_users banneduser1_ on place0_.id=banneduser1_.place_id left outer join users user2_ on banneduser1_.user_id=user2_.id left outer join user_roles user2_1_ on user2_.id=user2_1_.user_id where place0_.id=?
+04:18:36,917 DEBUG Loader:56 - Static select for action ACTION_REFRESH on entity tyovuoro.model.Place: select place0_.id as id1_2_1_, place0_.address as address2_2_1_, place0_.info as info3_2_1_, place0_.name as name4_2_1_, banneduser1_.place_id as place1_2_3_, user2_.id as user2_0_3_, user2_.id as id1_5_0_, user2_.address as address2_5_0_, user2_.email as email3_5_0_, user2_.firstname as firstnam4_5_0_, user2_.lastname as lastname5_5_0_, user2_.password as password6_5_0_, user2_.username as username7_5_0_, user2_1_.role_id as role1_4_0_ from places place0_ left outer join banned_users banneduser1_ on place0_.id=banneduser1_.place_id left outer join users user2_ on banneduser1_.user_id=user2_.id left outer join user_roles user2_1_ on user2_.id=user2_1_.user_id where place0_.id=?
+04:18:36,956 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [NONE]: select user0_.id as id1_5_1_, user0_.address as address2_5_1_, user0_.email as email3_5_1_, user0_.firstname as firstnam4_5_1_, user0_.lastname as lastname5_5_1_, user0_.password as password6_5_1_, user0_.username as username7_5_1_, user0_1_.role_id as role1_4_1_, role1_.id as id1_3_0_, role1_.role_name as role2_3_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id left outer join roles role1_ on user0_1_.role_id=role1_.id where user0_.id=?
+04:18:36,957 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [READ]: select user0_.id as id1_5_1_, user0_.address as address2_5_1_, user0_.email as email3_5_1_, user0_.firstname as firstnam4_5_1_, user0_.lastname as lastname5_5_1_, user0_.password as password6_5_1_, user0_.username as username7_5_1_, user0_1_.role_id as role1_4_1_, role1_.id as id1_3_0_, role1_.role_name as role2_3_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id left outer join roles role1_ on user0_1_.role_id=role1_.id where user0_.id=?
+04:18:36,957 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [UPGRADE]: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=? for update
+04:18:36,958 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [UPGRADE_NOWAIT]: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=? for update
+04:18:36,959 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [FORCE]: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=? for update
+04:18:36,959 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [PESSIMISTIC_READ]: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=? lock in share mode
+04:18:36,960 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [PESSIMISTIC_WRITE]: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=? for update
+04:18:36,960 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [PESSIMISTIC_FORCE_INCREMENT]: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=? for update
+04:18:36,961 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [OPTIMISTIC]: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=?
+04:18:37,006 DEBUG Loader:123 - Static select for entity tyovuoro.model.User [OPTIMISTIC_FORCE_INCREMENT]: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=?
+04:18:37,007 DEBUG Loader:56 - Static select for action ACTION_MERGE on entity tyovuoro.model.User: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=?
+04:18:37,007 DEBUG Loader:56 - Static select for action ACTION_REFRESH on entity tyovuoro.model.User: select user0_.id as id1_5_0_, user0_.address as address2_5_0_, user0_.email as email3_5_0_, user0_.firstname as firstnam4_5_0_, user0_.lastname as lastname5_5_0_, user0_.password as password6_5_0_, user0_.username as username7_5_0_, user0_1_.role_id as role1_4_0_ from users user0_ left outer join user_roles user0_1_ on user0_.id=user0_1_.user_id where user0_.id=?
+04:18:37,016 DEBUG OneToManyLoader:82 - Static select for one-to-many tyovuoro.model.User.orders: select orders0_.user_id as user7_5_2_, orders0_.id as id1_1_2_, orders0_.id as id1_1_1_, orders0_.date as date2_1_1_, orders0_.order_end as order3_1_1_, orders0_.order_start as order4_1_1_, orders0_.place_id as place6_1_1_, orders0_.timestamp as timestam5_1_1_, orders0_.user_id as user7_1_1_, place1_.id as id1_2_0_, place1_.address as address2_2_0_, place1_.info as info3_2_0_, place1_.name as name4_2_0_ from orders orders0_ left outer join places place1_ on orders0_.place_id=place1_.id where orders0_.user_id=?
+04:18:37,021 DEBUG BasicCollectionLoader:83 - Static select for collection tyovuoro.model.Role.userRoles: select userroles0_.role_id as role1_3_2_, userroles0_.user_id as user2_4_2_, user1_.id as id1_5_0_, user1_.address as address2_5_0_, user1_.email as email3_5_0_, user1_.firstname as firstnam4_5_0_, user1_.lastname as lastname5_5_0_, user1_.password as password6_5_0_, user1_.username as username7_5_0_, user1_1_.role_id as role1_4_0_, role2_.id as id1_3_1_, role2_.role_name as role2_3_1_ from user_roles userroles0_ inner join users user1_ on userroles0_.user_id=user1_.id left outer join user_roles user1_1_ on user1_.id=user1_1_.user_id left outer join roles role2_ on user1_1_.role_id=role2_.id where userroles0_.role_id=?
+04:18:37,021 DEBUG BasicCollectionLoader:83 - Static select for collection tyovuoro.model.Place.bannedUsers: select banneduser0_.place_id as place1_2_2_, banneduser0_.user_id as user2_0_2_, user1_.id as id1_5_0_, user1_.address as address2_5_0_, user1_.email as email3_5_0_, user1_.firstname as firstnam4_5_0_, user1_.lastname as lastname5_5_0_, user1_.password as password6_5_0_, user1_.username as username7_5_0_, user1_1_.role_id as role1_4_0_, role2_.id as id1_3_1_, role2_.role_name as role2_3_1_ from banned_users banneduser0_ inner join users user1_ on banneduser0_.user_id=user1_.id left outer join user_roles user1_1_ on user1_.id=user1_1_.user_id left outer join roles role2_ on user1_1_.role_id=role2_.id where banneduser0_.place_id=?
+04:18:37,022 DEBUG OneToManyLoader:82 - Static select for one-to-many tyovuoro.model.Place.orders: select orders0_.place_id as place6_2_3_, orders0_.id as id1_1_3_, orders0_.id as id1_1_2_, orders0_.date as date2_1_2_, orders0_.order_end as order3_1_2_, orders0_.order_start as order4_1_2_, orders0_.place_id as place6_1_2_, orders0_.timestamp as timestam5_1_2_, orders0_.user_id as user7_1_2_, user1_.id as id1_5_0_, user1_.address as address2_5_0_, user1_.email as email3_5_0_, user1_.firstname as firstnam4_5_0_, user1_.lastname as lastname5_5_0_, user1_.password as password6_5_0_, user1_.username as username7_5_0_, user1_1_.role_id as role1_4_0_, role2_.id as id1_3_1_, role2_.role_name as role2_3_1_ from orders orders0_ left outer join users user1_ on orders0_.user_id=user1_.id left outer join user_roles user1_1_ on user1_.id=user1_1_.user_id left outer join roles role2_ on user1_1_.role_id=role2_.id where orders0_.place_id=?
+04:18:37,056 DEBUG BasicCollectionLoader:83 - Static select for collection tyovuoro.model.User.bannedPlaces: select bannedplac0_.user_id as user2_5_1_, bannedplac0_.place_id as place1_0_1_, place1_.id as id1_2_0_, place1_.address as address2_2_0_, place1_.info as info3_2_0_, place1_.name as name4_2_0_ from banned_users bannedplac0_ inner join places place1_ on bannedplac0_.place_id=place1_.id where bannedplac0_.user_id=?
+04:18:37,061 DEBUG SessionFactoryRegistry:62 - Initializing SessionFactoryRegistry : org.hibernate.internal.SessionFactoryRegistry@e9df85f
+04:18:37,061 DEBUG SessionFactoryRegistry:75 - Registering SessionFactory: d27aff8a-75cb-40dd-ba42-28784ddba149 (<unnamed>)
+04:18:37,061 DEBUG SessionFactoryRegistry:82 - Not binding SessionFactory to JNDI, no JNDI name configured
+04:18:37,062 DEBUG SessionFactoryImpl:488 - Instantiated session factory
+04:18:37,071  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+04:18:37,072  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+04:18:37,072 DEBUG DriverManagerDataSource:162 - Creating new JDBC DriverManager Connection to [jdbc:mysql://127.0.0.1:3306/peuranie]
+04:18:37,099  INFO SchemaUpdate:205 - HHH000396: Updating schema
+04:18:37,099 DEBUG Configuration:3472 - Processing hbm.xml files
+04:18:37,099 DEBUG Configuration:3502 - Process annotated classes
+04:18:37,100 DEBUG Configuration:1420 - Processing fk mappings (*ToOne and JoinedSubclass)
+04:18:37,100 DEBUG Configuration:1603 - Processing extends queue
+04:18:37,100 DEBUG Configuration:1661 - Processing extends queue
+04:18:37,100 DEBUG Configuration:1606 - Processing collection mappings
+04:18:37,101 DEBUG Configuration:1616 - Processing native query and ResultSetMapping mappings
+04:18:37,101 DEBUG Configuration:1624 - Processing association property references
+04:18:37,101 DEBUG Configuration:1646 - Creating tables' unique integer identifiers
+04:18:37,101 DEBUG Configuration:1647 - Processing foreign key constraints
+04:18:37,102 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.User
+04:18:37,102 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.Place
+04:18:37,102 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.Place
+04:18:37,102 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.User
+04:18:37,103 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.Role
+04:18:37,103 DEBUG Configuration:1718 - Resolving reference to class: tyovuoro.model.User
+04:18:37,129  INFO TableMetadata:65 - HHH000261: Table found: peuranie.banned_users
+04:18:37,129  INFO TableMetadata:66 - HHH000037: Columns: [place_id, user_id]
+04:18:37,129  INFO TableMetadata:68 - HHH000108: Foreign keys: [banned_users_ibfk_3, banned_users_ibfk_4]
+04:18:37,130  INFO TableMetadata:69 - HHH000126: Indexes: [place_id, user_id]
+04:18:37,137  INFO TableMetadata:65 - HHH000261: Table found: peuranie.orders
+04:18:37,138  INFO TableMetadata:66 - HHH000037: Columns: [timestamp, id, order_start, place_id, order_end, user_id, date]
+04:18:37,138  INFO TableMetadata:68 - HHH000108: Foreign keys: [orders_ibfk_1]
+04:18:37,138  INFO TableMetadata:69 - HHH000126: Indexes: [place_id, primary]
+04:18:37,145  INFO TableMetadata:65 - HHH000261: Table found: peuranie.places
+04:18:37,145  INFO TableMetadata:66 - HHH000037: Columns: [id, address, name, info]
+04:18:37,145  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+04:18:37,146  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+04:18:37,152  INFO TableMetadata:65 - HHH000261: Table found: peuranie.roles
+04:18:37,152  INFO TableMetadata:66 - HHH000037: Columns: [id, role_name]
+04:18:37,153  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+04:18:37,153  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+04:18:37,161  INFO TableMetadata:65 - HHH000261: Table found: peuranie.user_roles
+04:18:37,161  INFO TableMetadata:66 - HHH000037: Columns: [role_id, user_id]
+04:18:37,161  INFO TableMetadata:68 - HHH000108: Foreign keys: [role, user]
+04:18:37,161  INFO TableMetadata:69 - HHH000126: Indexes: [role, user, uk_g1uebn6mqk9qiaw45vnacmyo2]
+04:18:37,169  INFO TableMetadata:65 - HHH000261: Table found: peuranie.users
+04:18:37,169  INFO TableMetadata:66 - HHH000037: Columns: [id, username, address, email, lastname, firstname, password]
+04:18:37,169  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+04:18:37,169  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+04:18:37,170 DEBUG DefaultIdentifierGeneratorFactory:107 - Setting dialect [org.hibernate.dialect.MySQLInnoDBDialect]
+04:18:37,171 DEBUG DefaultIdentifierGeneratorFactory:107 - Setting dialect [org.hibernate.dialect.MySQLInnoDBDialect]
+04:18:37,171 DEBUG DefaultIdentifierGeneratorFactory:107 - Setting dialect [org.hibernate.dialect.MySQLInnoDBDialect]
+04:18:37,171 DEBUG DefaultIdentifierGeneratorFactory:107 - Setting dialect [org.hibernate.dialect.MySQLInnoDBDialect]
+04:18:37,171 DEBUG SchemaUpdate:226 - alter table orders add index FK_k8kupdtcdpqd57b6j4yq9uvdj (user_id), add constraint FK_k8kupdtcdpqd57b6j4yq9uvdj foreign key (user_id) references users (id)
+04:18:37,201 ERROR SchemaUpdate:236 - HHH000388: Unsuccessful: alter table orders add index FK_k8kupdtcdpqd57b6j4yq9uvdj (user_id), add constraint FK_k8kupdtcdpqd57b6j4yq9uvdj foreign key (user_id) references users (id)
+04:18:37,201 ERROR SchemaUpdate:237 - Cannot add or update a child row: a foreign key constraint fails (`peuranie`.`#sql-1d10_289`, CONSTRAINT `FK_k8kupdtcdpqd57b6j4yq9uvdj` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))
+04:18:37,201  INFO SchemaUpdate:242 - HHH000232: Schema update complete
+04:18:37,202 DEBUG SessionFactoryImpl:1068 - Checking 0 named HQL queries
+04:18:37,202 DEBUG SessionFactoryImpl:1091 - Checking 0 named SQL queries
+04:18:37,208 DEBUG StatisticsInitiator:110 - Statistics initialized [enabled=false]
+04:18:37,209 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,209 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'sessionFactory'
+04:18:37,210 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+04:18:37,210 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+04:18:37,210 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+04:18:37,210 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+04:18:37,212 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0' to allow for resolving potential circular references
+04:18:37,216 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+04:18:37,216 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+04:18:37,216 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+04:18:37,216 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,216 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'orderController'
+04:18:37,216 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'orderController'
+04:18:37,225 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.OrderController]: AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.controller.OrderController.userSer
+04:18:37,225 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.OrderController]: AutowiredFieldElement for private tyovuoro.service.OrderService tyovuoro.controller.OrderController.orderSer
+04:18:37,225 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.OrderController]: AutowiredFieldElement for private tyovuoro.service.PlaceService tyovuoro.controller.OrderController.placeSer
+04:18:37,225 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'orderController' to allow for resolving potential circular references
+04:18:37,227 DEBUG InjectionMetadata:90 - Processing injected method of bean 'orderController': AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.controller.OrderController.userSer
+04:18:37,229 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'userServiceImpl'
+04:18:37,229 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'userServiceImpl'
+04:18:37,232 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.service.UserServiceImpl]: AutowiredFieldElement for private tyovuoro.DAO.UserDAO tyovuoro.service.UserServiceImpl.userDAO
+04:18:37,232 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.service.UserServiceImpl]: AutowiredFieldElement for private org.springframework.security.crypto.password.StandardPasswordEncoder tyovuoro.service.UserServiceImpl.encoder
+04:18:37,232 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'userServiceImpl' to allow for resolving potential circular references
+04:18:37,234 DEBUG InjectionMetadata:90 - Processing injected method of bean 'userServiceImpl': AutowiredFieldElement for private tyovuoro.DAO.UserDAO tyovuoro.service.UserServiceImpl.userDAO
+04:18:37,256 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'userDAOImpl'
+04:18:37,257 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'userDAOImpl'
+04:18:37,258 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.DAO.UserDAOImpl]: AutowiredFieldElement for private org.hibernate.SessionFactory tyovuoro.DAO.UserDAOImpl.sessionFactory
+04:18:37,258 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'userDAOImpl' to allow for resolving potential circular references
+04:18:37,260 DEBUG InjectionMetadata:90 - Processing injected method of bean 'userDAOImpl': AutowiredFieldElement for private org.hibernate.SessionFactory tyovuoro.DAO.UserDAOImpl.sessionFactory
+04:18:37,261 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'sessionFactory'
+04:18:37,261 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,265 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'userDAOImpl' to bean named 'sessionFactory'
+04:18:37,266 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,267 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'userDAOImpl'
+04:18:37,267 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'userServiceImpl' to bean named 'userDAOImpl'
+04:18:37,267 DEBUG InjectionMetadata:90 - Processing injected method of bean 'userServiceImpl': AutowiredFieldElement for private org.springframework.security.crypto.password.StandardPasswordEncoder tyovuoro.service.UserServiceImpl.encoder
+04:18:37,268 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'passwordEncoder'
+04:18:37,268 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'passwordEncoder'
+04:18:37,275 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'passwordEncoder' to allow for resolving potential circular references
+04:18:37,278 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,278 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'passwordEncoder'
+04:18:37,278 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'userServiceImpl' to bean named 'passwordEncoder'
+04:18:37,278 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,280 DEBUG AnnotationTransactionAttributeSource:106 - Adding transactional method 'getUser' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly; ''
+04:18:37,285 DEBUG InfrastructureAdvisorAutoProxyCreator:538 - Creating implicit proxy for bean 'userServiceImpl' with 0 common interceptors and 1 specific interceptors
+04:18:37,286 DEBUG JdkDynamicAopProxy:113 - Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [tyovuoro.service.UserServiceImpl@58a47c65]
+04:18:37,289 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'userServiceImpl'
+04:18:37,289 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'orderController' to bean named 'userServiceImpl'
+04:18:37,289 DEBUG InjectionMetadata:90 - Processing injected method of bean 'orderController': AutowiredFieldElement for private tyovuoro.service.OrderService tyovuoro.controller.OrderController.orderSer
+04:18:37,290 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'orderServiceImpl'
+04:18:37,290 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'orderServiceImpl'
+04:18:37,292 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.service.OrderServiceImpl]: AutowiredFieldElement for private tyovuoro.DAO.OrderDAO tyovuoro.service.OrderServiceImpl.orderDAO
+04:18:37,306 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'orderServiceImpl' to allow for resolving potential circular references
+04:18:37,308 DEBUG InjectionMetadata:90 - Processing injected method of bean 'orderServiceImpl': AutowiredFieldElement for private tyovuoro.DAO.OrderDAO tyovuoro.service.OrderServiceImpl.orderDAO
+04:18:37,309 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'orderDAOImpl'
+04:18:37,309 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'orderDAOImpl'
+04:18:37,310 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.DAO.OrderDAOImpl]: AutowiredFieldElement for private org.hibernate.SessionFactory tyovuoro.DAO.OrderDAOImpl.sessionFactory
+04:18:37,310 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'orderDAOImpl' to allow for resolving potential circular references
+04:18:37,313 DEBUG InjectionMetadata:90 - Processing injected method of bean 'orderDAOImpl': AutowiredFieldElement for private org.hibernate.SessionFactory tyovuoro.DAO.OrderDAOImpl.sessionFactory
+04:18:37,313 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'sessionFactory'
+04:18:37,313 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'orderDAOImpl' to bean named 'sessionFactory'
+04:18:37,313 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,314 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'orderDAOImpl'
+04:18:37,314 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'orderServiceImpl' to bean named 'orderDAOImpl'
+04:18:37,314 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,314 DEBUG AnnotationTransactionAttributeSource:106 - Adding transactional method 'getOrdersDate' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+04:18:37,315 DEBUG InfrastructureAdvisorAutoProxyCreator:538 - Creating implicit proxy for bean 'orderServiceImpl' with 0 common interceptors and 1 specific interceptors
+04:18:37,315 DEBUG JdkDynamicAopProxy:113 - Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [tyovuoro.service.OrderServiceImpl@74bbd2cd]
+04:18:37,320 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'orderServiceImpl'
+04:18:37,320 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'orderController' to bean named 'orderServiceImpl'
+04:18:37,320 DEBUG InjectionMetadata:90 - Processing injected method of bean 'orderController': AutowiredFieldElement for private tyovuoro.service.PlaceService tyovuoro.controller.OrderController.placeSer
+04:18:37,320 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'placeServiceImpl'
+04:18:37,321 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'placeServiceImpl'
+04:18:37,323 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.service.PlaceServiceImpl]: AutowiredFieldElement for private tyovuoro.DAO.PlaceDAO tyovuoro.service.PlaceServiceImpl.placeDAO
+04:18:37,323 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.service.PlaceServiceImpl]: AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.service.PlaceServiceImpl.userService
+04:18:37,323 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'placeServiceImpl' to allow for resolving potential circular references
+04:18:37,325 DEBUG InjectionMetadata:90 - Processing injected method of bean 'placeServiceImpl': AutowiredFieldElement for private tyovuoro.DAO.PlaceDAO tyovuoro.service.PlaceServiceImpl.placeDAO
+04:18:37,326 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'placeDAOImpl'
+04:18:37,326 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'placeDAOImpl'
+04:18:37,326 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.DAO.PlaceDAOImpl]: AutowiredFieldElement for private org.hibernate.SessionFactory tyovuoro.DAO.PlaceDAOImpl.sessionFactory
+04:18:37,356 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'placeDAOImpl' to allow for resolving potential circular references
+04:18:37,358 DEBUG InjectionMetadata:90 - Processing injected method of bean 'placeDAOImpl': AutowiredFieldElement for private org.hibernate.SessionFactory tyovuoro.DAO.PlaceDAOImpl.sessionFactory
+04:18:37,358 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'sessionFactory'
+04:18:37,359 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'placeDAOImpl' to bean named 'sessionFactory'
+04:18:37,359 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,359 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'placeDAOImpl'
+04:18:37,359 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'placeServiceImpl' to bean named 'placeDAOImpl'
+04:18:37,360 DEBUG InjectionMetadata:90 - Processing injected method of bean 'placeServiceImpl': AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.service.PlaceServiceImpl.userService
+04:18:37,360 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'userServiceImpl'
+04:18:37,360 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'placeServiceImpl' to bean named 'userServiceImpl'
+04:18:37,360 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,360 DEBUG AnnotationTransactionAttributeSource:106 - Adding transactional method 'getBannedUsers' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly; ''
+04:18:37,361 DEBUG InfrastructureAdvisorAutoProxyCreator:538 - Creating implicit proxy for bean 'placeServiceImpl' with 0 common interceptors and 1 specific interceptors
+04:18:37,361 DEBUG JdkDynamicAopProxy:113 - Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [tyovuoro.service.PlaceServiceImpl@63031e0f]
+04:18:37,363 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'placeServiceImpl'
+04:18:37,363 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'orderController' to bean named 'placeServiceImpl'
+04:18:37,364 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,365 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'orderController'
+04:18:37,365 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'placeController'
+04:18:37,365 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'placeController'
+04:18:37,370 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.PlaceController]: AutowiredFieldElement for private tyovuoro.service.PlaceService tyovuoro.controller.PlaceController.placeSer
+04:18:37,370 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.PlaceController]: AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.controller.PlaceController.userSer
+04:18:37,371 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'placeController' to allow for resolving potential circular references
+04:18:37,372 DEBUG InjectionMetadata:90 - Processing injected method of bean 'placeController': AutowiredFieldElement for private tyovuoro.service.PlaceService tyovuoro.controller.PlaceController.placeSer
+04:18:37,373 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'placeServiceImpl'
+04:18:37,373 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'placeController' to bean named 'placeServiceImpl'
+04:18:37,373 DEBUG InjectionMetadata:90 - Processing injected method of bean 'placeController': AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.controller.PlaceController.userSer
+04:18:37,406 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'userServiceImpl'
+04:18:37,406 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'placeController' to bean named 'userServiceImpl'
+04:18:37,406 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,407 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'placeController'
+04:18:37,407 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'securityController'
+04:18:37,407 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'securityController'
+04:18:37,408 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.SecurityController]: AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.controller.SecurityController.userSer
+04:18:37,408 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'securityController' to allow for resolving potential circular references
+04:18:37,410 DEBUG InjectionMetadata:90 - Processing injected method of bean 'securityController': AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.controller.SecurityController.userSer
+04:18:37,411 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'userServiceImpl'
+04:18:37,411 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'securityController' to bean named 'userServiceImpl'
+04:18:37,411 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,411 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'securityController'
+04:18:37,411 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'staticPagesController'
+04:18:37,412 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'staticPagesController'
+04:18:37,413 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'staticPagesController' to allow for resolving potential circular references
+04:18:37,414 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,415 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'staticPagesController'
+04:18:37,415 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'userController'
+04:18:37,415 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'userController'
+04:18:37,418 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.UserController]: AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.controller.UserController.userSer
+04:18:37,418 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.UserController]: AutowiredFieldElement for private tyovuoro.service.RoleService tyovuoro.controller.UserController.roleSer
+04:18:37,418 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.controller.UserController]: AutowiredFieldElement for private tyovuoro.service.PlaceService tyovuoro.controller.UserController.placeSer
+04:18:37,418 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'userController' to allow for resolving potential circular references
+04:18:37,420 DEBUG InjectionMetadata:90 - Processing injected method of bean 'userController': AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.controller.UserController.userSer
+04:18:37,420 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'userServiceImpl'
+04:18:37,421 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'userController' to bean named 'userServiceImpl'
+04:18:37,421 DEBUG InjectionMetadata:90 - Processing injected method of bean 'userController': AutowiredFieldElement for private tyovuoro.service.RoleService tyovuoro.controller.UserController.roleSer
+04:18:37,456 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'roleServiceImpl'
+04:18:37,456 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'roleServiceImpl'
+04:18:37,457 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.service.RoleServiceImpl]: AutowiredFieldElement for private tyovuoro.DAO.RoleDAO tyovuoro.service.RoleServiceImpl.roleDAO
+04:18:37,458 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'roleServiceImpl' to allow for resolving potential circular references
+04:18:37,462 DEBUG InjectionMetadata:90 - Processing injected method of bean 'roleServiceImpl': AutowiredFieldElement for private tyovuoro.DAO.RoleDAO tyovuoro.service.RoleServiceImpl.roleDAO
+04:18:37,464 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'roleDAOImpl'
+04:18:37,464 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'roleDAOImpl'
+04:18:37,465 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.DAO.RoleDAOImpl]: AutowiredFieldElement for private org.hibernate.SessionFactory tyovuoro.DAO.RoleDAOImpl.sessionFactory
+04:18:37,466 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'roleDAOImpl' to allow for resolving potential circular references
+04:18:37,471 DEBUG InjectionMetadata:90 - Processing injected method of bean 'roleDAOImpl': AutowiredFieldElement for private org.hibernate.SessionFactory tyovuoro.DAO.RoleDAOImpl.sessionFactory
+04:18:37,472 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'sessionFactory'
+04:18:37,472 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'roleDAOImpl' to bean named 'sessionFactory'
+04:18:37,472 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,474 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'roleDAOImpl'
+04:18:37,474 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'roleServiceImpl' to bean named 'roleDAOImpl'
+04:18:37,474 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,475 DEBUG AnnotationTransactionAttributeSource:106 - Adding transactional method 'getRole' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+04:18:37,476 DEBUG InfrastructureAdvisorAutoProxyCreator:538 - Creating implicit proxy for bean 'roleServiceImpl' with 0 common interceptors and 1 specific interceptors
+04:18:37,476 DEBUG JdkDynamicAopProxy:113 - Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [tyovuoro.service.RoleServiceImpl@44192ac2]
+04:18:37,481 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'roleServiceImpl'
+04:18:37,481 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'userController' to bean named 'roleServiceImpl'
+04:18:37,482 DEBUG InjectionMetadata:90 - Processing injected method of bean 'userController': AutowiredFieldElement for private tyovuoro.service.PlaceService tyovuoro.controller.UserController.placeSer
+04:18:37,482 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'placeServiceImpl'
+04:18:37,483 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'userController' to bean named 'placeServiceImpl'
+04:18:37,483 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,485 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'userController'
+04:18:37,486 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'orderDAOImpl'
+04:18:37,486 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'placeDAOImpl'
+04:18:37,486 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'roleDAOImpl'
+04:18:37,506 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'userDAOImpl'
+04:18:37,506 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'customUserDetailsService'
+04:18:37,506 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'customUserDetailsService'
+04:18:37,507 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.service.CustomUserDetailsService]: AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.service.CustomUserDetailsService.userS
+04:18:37,508 DEBUG InjectionMetadata:61 - Found injected element on class [tyovuoro.service.CustomUserDetailsService]: AutowiredFieldElement for private tyovuoro.service.RoleService tyovuoro.service.CustomUserDetailsService.roleS
+04:18:37,508 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'customUserDetailsService' to allow for resolving potential circular references
+04:18:37,510 DEBUG InjectionMetadata:90 - Processing injected method of bean 'customUserDetailsService': AutowiredFieldElement for private tyovuoro.service.UserService tyovuoro.service.CustomUserDetailsService.userS
+04:18:37,510 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'userServiceImpl'
+04:18:37,511 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'customUserDetailsService' to bean named 'userServiceImpl'
+04:18:37,511 DEBUG InjectionMetadata:90 - Processing injected method of bean 'customUserDetailsService': AutowiredFieldElement for private tyovuoro.service.RoleService tyovuoro.service.CustomUserDetailsService.roleS
+04:18:37,511 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'roleServiceImpl'
+04:18:37,511 DEBUG AutowiredAnnotationBeanPostProcessor:432 - Autowiring by type from bean name 'customUserDetailsService' to bean named 'roleServiceImpl'
+04:18:37,511 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,512 DEBUG AnnotationTransactionAttributeSource:106 - Adding transactional method 'loadUserByUsername' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly; ''
+04:18:37,512 DEBUG InfrastructureAdvisorAutoProxyCreator:538 - Creating implicit proxy for bean 'customUserDetailsService' with 0 common interceptors and 1 specific interceptors
+04:18:37,512 DEBUG JdkDynamicAopProxy:113 - Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [tyovuoro.service.CustomUserDetailsService@6dc2367e]
+04:18:37,514 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'customUserDetailsService'
+04:18:37,514 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'orderServiceImpl'
+04:18:37,514 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'placeServiceImpl'
+04:18:37,515 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'roleServiceImpl'
+04:18:37,515 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'userServiceImpl'
+04:18:37,515 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+04:18:37,515 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+04:18:37,515 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+04:18:37,515 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+04:18:37,515 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor'
+04:18:37,516 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'transactionManager'
+04:18:37,556 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'transactionManager'
+04:18:37,562 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'transactionManager' to allow for resolving potential circular references
+04:18:37,567 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'sessionFactory'
+04:18:37,567 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'transactionManager'
+04:18:37,574  INFO HibernateTransactionManager:268 - Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@434794b5] of Hibernate SessionFactory for HibernateTransactionManager
+04:18:37,576 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,577 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'transactionManager'
+04:18:37,577 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.filterChains'
+04:18:37,577 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.filterChains'
+04:18:37,578 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.filterChains' to allow for resolving potential circular references
+04:18:37,582 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.DefaultSecurityFilterChain#0'
+04:18:37,582 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.DefaultSecurityFilterChain#0'
+04:18:37,583 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)'
+04:18:37,585 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,586 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)'
+04:18:37,586 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#1'
+04:18:37,586 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.context.HttpSessionSecurityContextRepository#0'
+04:18:37,586 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.context.HttpSessionSecurityContextRepository#0'
+04:18:37,590 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.context.HttpSessionSecurityContextRepository#0' to allow for resolving potential circular references
+04:18:37,593 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,593 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.context.HttpSessionSecurityContextRepository#0'
+04:18:37,595 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,595 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,595 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,595 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,596 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,596 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,596 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,600 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#1'
+04:18:37,601 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,606 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#1'
+04:18:37,608 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#2'
+04:18:37,610 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#2'
+04:18:37,613 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,614 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#2'
+04:18:37,615 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:37,616 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,616 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,616 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:37,616 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:37,617 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,617 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,617 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:37,617 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:37,618 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,618 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,618 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:37,618 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:37,619 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,619 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,619 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:37,619 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:37,620 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,620 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,620 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:37,621 DEBUG BeanUtils:442 - No property editor [org.springframework.security.web.authentication.logout.LogoutSuccessHandlerEditor] found for type org.springframework.security.web.authentication.logout.LogoutSuccessHandler according to 'Editor' suffix convention
+04:18:37,623 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,623 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,623 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,624 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,624 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,624 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,624 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,630 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#2'
+04:18:37,656 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,656 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#2'
+04:18:37,656 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0'
+04:18:37,657 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0'
+04:18:37,659 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,659 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,660 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,660 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,660 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,660 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,661 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,666 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0' to allow for resolving potential circular references
+04:18:37,672 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#3'
+04:18:37,677 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.savedrequest.HttpSessionRequestCache#0'
+04:18:37,677 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.savedrequest.HttpSessionRequestCache#0'
+04:18:37,678 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.savedrequest.HttpSessionRequestCache#0' to allow for resolving potential circular references
+04:18:37,680 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.PortResolverImpl#0'
+04:18:37,680 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.PortResolverImpl#0'
+04:18:37,681 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.PortResolverImpl#0' to allow for resolving potential circular references
+04:18:37,683 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.PortMapperImpl#0'
+04:18:37,683 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.PortMapperImpl#0'
+04:18:37,684 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.PortMapperImpl#0' to allow for resolving potential circular references
+04:18:37,686 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,687 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.PortMapperImpl#0'
+04:18:37,687 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,687 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.PortResolverImpl#0'
+04:18:37,688 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,688 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.savedrequest.HttpSessionRequestCache#0'
+04:18:37,706 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,706 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#3'
+04:18:37,707 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy#0'
+04:18:37,707 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy#0'
+04:18:37,707 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy#0' to allow for resolving potential circular references
+04:18:37,710 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,711 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy#0'
+04:18:37,711 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#4'
+04:18:37,714 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,715 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#4'
+04:18:37,715 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.authentication.ProviderManager#0'
+04:18:37,715 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.authentication.ProviderManager#0'
+04:18:37,716 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.authentication.AnonymousAuthenticationProvider#0'
+04:18:37,716 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.authentication.AnonymousAuthenticationProvider#0'
+04:18:37,717 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.authentication.AnonymousAuthenticationProvider#0' to allow for resolving potential circular references
+04:18:37,720 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.authentication.AnonymousAuthenticationProvider#0'
+04:18:37,720 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,721 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.authentication.AnonymousAuthenticationProvider#0'
+04:18:37,721 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.config.authentication.AuthenticationManagerFactoryBean#0'
+04:18:37,721 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.config.authentication.AuthenticationManagerFactoryBean#0'
+04:18:37,721 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.config.authentication.AuthenticationManagerFactoryBean#0' to allow for resolving potential circular references
+04:18:37,724 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,725 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.config.authentication.AuthenticationManagerFactoryBean#0'
+04:18:37,725 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.authenticationManager'
+04:18:37,725 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.authenticationManager'
+04:18:37,725 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.authentication.dao.DaoAuthenticationProvider#0'
+04:18:37,776 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.authentication.dao.DaoAuthenticationProvider#0'
+04:18:37,780 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.authentication.dao.DaoAuthenticationProvider#0' to allow for resolving potential circular references
+04:18:37,784 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'passwordEncoder'
+04:18:37,784 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'customUserDetailsService'
+04:18:37,791 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.authentication.dao.DaoAuthenticationProvider#0'
+04:18:37,791 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,792 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.authentication.dao.DaoAuthenticationProvider#0'
+04:18:37,794 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.authenticationManager' to allow for resolving potential circular references
+04:18:37,797 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.authentication.DefaultAuthenticationEventPublisher#0'
+04:18:37,797 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.authentication.DefaultAuthenticationEventPublisher#0'
+04:18:37,801 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.authentication.DefaultAuthenticationEventPublisher#0' to allow for resolving potential circular references
+04:18:37,803 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,804 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.authentication.DefaultAuthenticationEventPublisher#0'
+04:18:37,804 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.authenticationManager'
+04:18:37,804 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,805 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.authenticationManager'
+04:18:37,805 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,805 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.authentication.ProviderManager#0' to allow for resolving potential circular references
+04:18:37,805 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#5'
+04:18:37,811 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.config.authentication.AuthenticationManagerFactoryBean#0'
+04:18:37,811 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#5'
+04:18:37,811 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,812 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#5'
+04:18:37,812 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,813 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.authentication.ProviderManager#0'
+04:18:37,813 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,826 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.authentication.ProviderManager#0'
+04:18:37,826 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0'
+04:18:37,826 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,827 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0'
+04:18:37,827 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#6'
+04:18:37,828 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.authentication.ProviderManager#0'
+04:18:37,828 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint#0'
+04:18:37,828 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint#0'
+04:18:37,829 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint#0' to allow for resolving potential circular references
+04:18:37,831 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint#0'
+04:18:37,831 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,831 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint#0'
+04:18:37,833 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,833 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,833 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,833 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,834 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,834 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,834 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,838 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#6'
+04:18:37,838 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,839 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#6'
+04:18:37,839 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#7'
+04:18:37,840 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.web.savedrequest.HttpSessionRequestCache#0'
+04:18:37,840 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,841 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,841 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,841 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,841 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,876 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,876 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,881 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#7'
+04:18:37,881 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,881 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#7'
+04:18:37,882 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#8'
+04:18:37,882 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,882 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,883 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,883 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,883 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,883 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,883 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,887 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#8'
+04:18:37,887 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,888 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#8'
+04:18:37,888 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#9'
+04:18:37,890 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,890 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,891 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,891 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,891 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,891 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,892 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,896 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#9'
+04:18:37,896 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,897 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#9'
+04:18:37,897 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#10'
+04:18:37,898 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.web.context.HttpSessionSecurityContextRepository#0'
+04:18:37,898 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy#0'
+04:18:37,899 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,926 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,926 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,926 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,927 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,927 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,927 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,931 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#10'
+04:18:37,931 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,932 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#10'
+04:18:37,932 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#10'
+04:18:37,932 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,933 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#10'
+04:18:37,933 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#11'
+04:18:37,935 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#11'
+04:18:37,939 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.web.PortMapperImpl#0'
+04:18:37,939 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.web.PortResolverImpl#0'
+04:18:37,939 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#11'
+04:18:37,939 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,940 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#11'
+04:18:37,940 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.web.savedrequest.HttpSessionRequestCache#0'
+04:18:37,941 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:37,942 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:37,942 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:37,942 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:37,942 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:37,942 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:37,943 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:37,949 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#12'
+04:18:37,951 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,951 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#12'
+04:18:37,952 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name '(inner bean)#11'
+04:18:37,952 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:37,977 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#11'
+04:18:37,977 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0'
+04:18:37,978 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0'
+04:18:37,981 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0' to allow for resolving potential circular references
+04:18:37,988 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'accessDecisionManager'
+04:18:37,988 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'accessDecisionManager'
+04:18:37,990 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'accessDecisionManager' to allow for resolving potential circular references
+04:18:37,996 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'roleVoter'
+04:18:37,996 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'roleVoter'
+04:18:37,997 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'roleHierarchy'
+04:18:37,998 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'roleHierarchy'
+04:18:37,999 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'roleHierarchy' to allow for resolving potential circular references
+04:18:38,003 DEBUG RoleHierarchyImpl:95 - setHierarchy() - The following role hierarchy was set: 
+                ROLE_MODERATOR > ROLE_ADMIN
+                ROLE_ADMIN > ROLE_USER
+                ROLE_USER > ROLE_PHARMACY
+            
+04:18:38,004 DEBUG RoleHierarchyImpl:181 - buildRolesReachableInOneStepMap() - From role ROLE_MODERATOR one can reach role ROLE_ADMIN in one step.
+04:18:38,004 DEBUG RoleHierarchyImpl:181 - buildRolesReachableInOneStepMap() - From role ROLE_ADMIN one can reach role ROLE_USER in one step.
+04:18:38,004 DEBUG RoleHierarchyImpl:181 - buildRolesReachableInOneStepMap() - From role ROLE_USER one can reach role ROLE_PHARMACY in one step.
+04:18:38,005 DEBUG RoleHierarchyImpl:223 - buildRolesReachableInOneOrMoreStepsMap() - From role ROLE_ADMIN one can reach [ROLE_PHARMACY, ROLE_USER] in one or more steps.
+04:18:38,005 DEBUG RoleHierarchyImpl:223 - buildRolesReachableInOneOrMoreStepsMap() - From role ROLE_USER one can reach [ROLE_PHARMACY] in one or more steps.
+04:18:38,006 DEBUG RoleHierarchyImpl:223 - buildRolesReachableInOneOrMoreStepsMap() - From role ROLE_MODERATOR one can reach [ROLE_ADMIN, ROLE_PHARMACY, ROLE_USER] in one or more steps.
+04:18:38,006 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,006 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'roleHierarchy'
+04:18:38,007 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'roleVoter' to allow for resolving potential circular references
+04:18:38,012 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,013 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'roleVoter'
+04:18:38,014 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.web.access.expression.WebExpressionVoter#7f586789'
+04:18:38,020 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'defExpressionHandler'
+04:18:38,020 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'defExpressionHandler'
+04:18:38,022 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'defExpressionHandler' to allow for resolving potential circular references
+04:18:38,027 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'roleHierarchy'
+04:18:38,028 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'defExpressionHandler'
+04:18:38,028 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,029 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.access.expression.WebExpressionVoter#7f586789'
+04:18:38,030 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'accessDecisionManager'
+04:18:38,030 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,031 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'accessDecisionManager'
+04:18:38,031 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.authentication.ProviderManager#0'
+04:18:38,032 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#13'
+04:18:38,033 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#13'
+04:18:38,039 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,039 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#13'
+04:18:38,040 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#14'
+04:18:38,042 DEBUG CachedIntrospectionResults:147 - Not strongly caching class [java.util.ArrayList] because it is not cache-safe
+04:18:38,046 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,047 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#14'
+04:18:38,048 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#15'
+04:18:38,048 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,048 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#15'
+04:18:38,049 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#16'
+04:18:38,049 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,049 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#16'
+04:18:38,050 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#17'
+04:18:38,050 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,050 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#17'
+04:18:38,051 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#18'
+04:18:38,051 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,051 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#18'
+04:18:38,051 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#19'
+04:18:38,052 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,053 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#19'
+04:18:38,053 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#20'
+04:18:38,053 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,076 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#20'
+04:18:38,076 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#21'
+04:18:38,077 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,077 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#21'
+04:18:38,077 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#22'
+04:18:38,078 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,078 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#22'
+04:18:38,078 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#23'
+04:18:38,079 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,079 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#23'
+04:18:38,080 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#24'
+04:18:38,081 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,082 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#24'
+04:18:38,082 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'defExpressionHandler'
+04:18:38,083 DEBUG ExpressionBasedFilterInvocationSecurityMetadataSource:47 - Adding web access control expression 'permitAll', for Ant [pattern='/login']
+04:18:38,104 DEBUG ExpressionBasedFilterInvocationSecurityMetadataSource:47 - Adding web access control expression 'permitAll', for Ant [pattern='/login-error']
+04:18:38,104 DEBUG ExpressionBasedFilterInvocationSecurityMetadataSource:47 - Adding web access control expression 'permitAll', for Ant [pattern='/logout']
+04:18:38,105 DEBUG ExpressionBasedFilterInvocationSecurityMetadataSource:47 - Adding web access control expression 'permitAll', for Ant [pattern='/resources/**']
+04:18:38,105 DEBUG ExpressionBasedFilterInvocationSecurityMetadataSource:47 - Adding web access control expression 'isAuthenticated()', for org.springframework.security.web.util.AnyRequestMatcher@1
+04:18:38,106 DEBUG ExpressionBasedFilterInvocationSecurityMetadataSource:47 - Adding web access control expression 'hasRole('ROLE_ADMIN')', for Ant [pattern='/admin/**']
+04:18:38,112 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#13'
+04:18:38,112 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0'
+04:18:38,112 DEBUG FilterSecurityInterceptor:159 - Validated configuration attributes
+04:18:38,113 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,113 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0'
+04:18:38,115 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,115 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,115 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,115 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,116 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,116 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,116 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,117 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,117 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,117 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,117 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,118 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,118 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,118 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,118 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,138 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,139 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,139 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,140 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,140 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,140  INFO DefaultSecurityFilterChain:28 - Creating filter chain: org.springframework.security.web.util.AnyRequestMatcher@1, [org.springframework.security.web.context.SecurityContextPersistenceFilter@51c73e00, org.springframework.security.web.authentication.logout.LogoutFilter@6fb79bf1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7f5f2483, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3f5655c9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3d1a1f9b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e111873, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@145c66ae, org.springframework.security.web.session.SessionManagementFilter@3e5933f3, org.springframework.security.web.access.ExceptionTranslationFilter@5261b67f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@d14761a]
+04:18:38,141 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.web.DefaultSecurityFilterChain#0' to allow for resolving potential circular references
+04:18:38,143 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,144 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.web.DefaultSecurityFilterChain#0'
+04:18:38,144 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.filterChains'
+04:18:38,144 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,145 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean 'org.springframework.security.filterChains'
+04:18:38,145 DEBUG DefaultListableBeanFactory:217 - Creating shared instance of singleton bean 'org.springframework.security.filterChainProxy'
+04:18:38,145 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean 'org.springframework.security.filterChainProxy'
+04:18:38,145 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.security.filterChains'
+04:18:38,145 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,147 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,147 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,147 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,147 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,148 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,148 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,148 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,148 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,148 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,149 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,149 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,149 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,149 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,149 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,150 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,150 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,150 DEBUG StandardEnvironment:112 - Initializing new StandardEnvironment
+04:18:38,150 DEBUG StandardEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,150 DEBUG StandardEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,151 DEBUG StandardEnvironment:116 - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+04:18:38,151 DEBUG BeanUtils:442 - No property editor [org.springframework.security.web.SecurityFilterChainEditor] found for type org.springframework.security.web.SecurityFilterChain according to 'Editor' suffix convention
+04:18:38,152 DEBUG StandardServletEnvironment:112 - Initializing new StandardServletEnvironment
+04:18:38,152 DEBUG StandardServletEnvironment:107 - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+04:18:38,152 DEBUG StandardServletEnvironment:107 - Adding [servletContextInitParams] PropertySource with lowest search precedence
+04:18:38,152 DEBUG StandardServletEnvironment:107 - Adding [jndiProperties] PropertySource with lowest search precedence
+04:18:38,152 DEBUG StandardServletEnvironment:107 - Adding [systemProperties] PropertySource with lowest search precedence
+04:18:38,153 DEBUG StandardServletEnvironment:107 - Adding [systemEnvironment] PropertySource with lowest search precedence
+04:18:38,153 DEBUG StandardServletEnvironment:116 - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+04:18:38,156 DEBUG DefaultListableBeanFactory:504 - Eagerly caching bean 'org.springframework.security.filterChainProxy' to allow for resolving potential circular references
+04:18:38,160 DEBUG DefaultListableBeanFactory:430 - Creating instance of bean '(inner bean)#25'
+04:18:38,163 DEBUG DefaultListableBeanFactory:245 - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+04:18:38,163 DEBUG DefaultListableBeanFactory:458 - Finished creating instance of bean '(inner bean)#25'
+04:18:38,164 DEBUG DefaultListableBeanFactory:1498 - Invoking afterPropertiesSet() on bean with name 'org.springframework.security.filterChainProxy'
+04:18:38,164  INFO DefaultFilterChainValidator:122 - Checking whether login URL '/login' is accessible with your configuration
+04:18:38,167 DEBUG AntPathRequestMatcher:103 - Checking match of request : '/login'; against '/login'
+04:18:38,168 DEBUG RoleHierarchyImpl:117 - getReachableGrantedAuthorities() - From the roles [ROLE_ANONYMOUS] one can reach [ROLE_ANONYMOUS] in zero or more steps.
+04:18:38,168 DEBUG AffirmativeBased:65 - Voter: org.springframework.security.access.vote.RoleHierarchyVoter@484667bb, returned: 0
+04:18:38,175 DEBUG AffirmativeBased:65 - Voter: org.springframework.security.web.access.expression.WebExpressionVoter@60343ed9, returned: 1

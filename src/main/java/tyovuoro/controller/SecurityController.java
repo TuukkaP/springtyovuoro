@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tyovuoro.DAO.UserDAO;
 import tyovuoro.service.CustomUserDetailsService;
+import tyovuoro.service.UserService;
 
 @Controller
 public class SecurityController {
 
     @Autowired
-    private UserDAO userSer;
+    private UserService userSer;
 
     @RequestMapping({"/login"})
     public String login(ModelMap model) {
