@@ -17,6 +17,8 @@ public interface OrderDAO {
     public List getOrdersPlace(int id);
 
     public List getOrdersPlace(List<Integer> places);
+    
+    public List getOrdersUser(User user, DateTime from, DateTime to);
 
     public List getOrdersPlaceAndDay(List<Integer> places, DateTime  from, DateTime  to);
     

@@ -1,0 +1,6 @@
+#surefire
+#Fri Nov 22 01:53:49 EET 2013
+maven.ext.class.path=C\:\\Program Files\\NetBeans 7.4\\java\\maven-nblib\\netbeans-eventspy.jar
+user.dir=C\:\\Users\\tuukka\\Documents\\NetBeansProjects\\tyovuorosovellus
+localRepository=C\:\\Users\\tuukka\\.m2\\repository
+basedir=C\:\\Users\\tuukka\\Documents\\NetBeansProjects\\tyovuorosovellus

@@ -105,4 +105,10 @@ public class OrderDAOImpl implements OrderDAO {
         return sessionFactory.getCurrentSession().createQuery("from User u where u not in (select o.user from Order o where o.date = :date)")
                 .setParameter("date", date.toLocalDateTime()).list();
     }
+
+    @Override
+    public List getOrdersUser(User user, DateTime from, DateTime to) {
+        return sessionFactory.getCurrentSession().createQuery("from Order o where o.date between :start and :end  and o.user = :user order by o.date")
+                .setParameter("start", from.toLocalDateTime()).setParameter("end", to.toLocalDateTime()).setParameter("user", user).list();
+    }
 }

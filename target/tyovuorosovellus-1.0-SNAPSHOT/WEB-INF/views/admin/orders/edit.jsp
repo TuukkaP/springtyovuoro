@@ -12,7 +12,9 @@
     <body>
         <table class="table">
             <thead> 
-                <tr><td><h3>Tilaus</h3></td></tr>
+                <tr><td><h3>Tilaus</h3>
+                    <f:errors path="*" cssClass="errorblock" element="div" />
+                    </td></tr>
                 <tr>
                     <th><br><br>Päivämäärä</th>
                     <th>Paikka</th>
@@ -24,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                <f:form action="${pageContext.request.contextPath}/order/edit/${order.getId()}" method="PUT" modelAttribute="order">
+                <f:form action="${pageContext.request.contextPath}/admin/order/edit/${order.getId()}" method="PUT" modelAttribute="order">
                     <f:hidden path="id" />
                     <tr>
                         <td>
@@ -37,8 +39,8 @@
                         </td>
                         <td>
                             <f:select path="user.id">
+                                <f:option value="0">Ei työntekijää</f:option>
                                 <f:options items="${vacantUsers}" itemValue="id"/>
-                                <c:if test="${vacantUsers.isEmpty() == true}"><option>Ei vapaita työntekijöitä</option></c:if>
                 </f:select>
             </td>
             <td>
@@ -55,10 +57,19 @@
             </tr>
     </f:form>                            
 </table>
-<ul>
-    <c:forEach items="${OrdersForToday}" var="order">
-        <li>${order.user}, ${order.place.name}, ${order.order_start.toString("HH:mm")}-${order.order_end.toString("HH:mm")} </li>
-        </c:forEach>
-</ul>
+                        <c:choose>
+                            <c:when test="${OrdersForToday.isEmpty() == true}">
+                                ${order.date.toString("dd.MM.yyyy")} ei ole muita vuoroja
+                            </c:when>
+                            <c:otherwise>
+                                <h3>Vuorot ${order.date.toString("dd.MM.yyyy")}</h3>
+                                <ul>
+                                    <c:forEach items="${OrdersForToday}" var="order">
+                                        <li><c:if test="${order.user.id != null}">${order.user}</c:if><c:if test="${order.user.id == null}">Ei tekijää</c:if>, ${order.place.name}, ${order.order_start.toString("HH:mm")}-${order.order_end.toString("HH:mm")} </li>
+                                        </c:forEach>
+                                </ul>
+                                Yhteensä ${OrdersForToday.size()} vuoroa.
+                            </c:otherwise>
+                        </c:choose>
 </body>
 </html>

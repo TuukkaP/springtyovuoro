@@ -12,21 +12,20 @@
         <meta name="currentPage" content="login"/>
         <title>Login</title>
     </head>
-    <body>
-        <div class="container">
-            <form class="form-signin" method="post" action="<c:url value='j_spring_security_check' />">
+    <body><div class="row" id="login-form">
+            <form class="form-signin" method="post" action="<c:url value='/do_login' />">
                 <h2 class="form-signin-heading">Kirjaudu sisään</h2>
-                <p> ${message}
+                ${message}
                     <c:if test="${not empty error}">
-                        <b class="error">${error}</b>
+                        <p class="text-danger">${error}</p>
                     </c:if>
-                </p>
-                <input type="text" class="input-block-level" placeholder="Käyttäjätunnus" name="j_username">
-                <input type="password" class="input-block-level" placeholder="Salasana" name="j_password" >
+                
+                <input type="text" class="form-control input-lg" placeholder="Käyttäjätunnus" name="j_username" required autofocus>
+                <input type="password" class="form-control input-lg" placeholder="Salasana" name="j_password" required >
                 <!--                <label class="checkbox">
                                     <input type="checkbox" value="remember-me" name="_spring_security_remember_me"> Muista sisäänkirjautuminen
                                 </label>-->
-                <button class="btn btn-large btn-primary" type="submit">Kirjaudu sisään</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Kirjaudu sisään</button>
             </form>
         </div>
     </body>

@@ -34,10 +34,10 @@
                         <td>${user.email}</td>
                         <td><font style="text-transform: capitalize">${fn:toLowerCase(user.role)}</font></td>
                         <td> 
-                            <form action="${pageContext.request.contextPath}/user/${user.username}">
+                            <form action="${pageContext.request.contextPath}/admin/user/${user.username}">
                                 <input type="submit" value="Muokkaa" class="btn btn-warning">
                             </form></td>
-                        <td><f:form action="${pageContext.request.contextPath}/user/delete" method="DELETE" onsubmit="return confirm('Haluatko varmasti poistaa käyttäjän: ${user.username} ?');">
+                        <td><f:form action="${pageContext.request.contextPath}/admin/user/delete" method="DELETE" onsubmit="return confirm('Haluatko varmasti poistaa käyttäjän: ${user.username} ?');">
                                 <input type="hidden" name="id" value="${user.id}">
                                 <input type="submit" value="Poista" class="btn btn-danger" />
                             </f:form></td>

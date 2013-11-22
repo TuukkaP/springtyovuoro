@@ -22,7 +22,7 @@ import tyovuoro.service.PlaceService;
 import tyovuoro.service.UserService;
 
 @Controller
-@RequestMapping({"/place"})
+
 public class PlaceController {
 
     @Autowired
@@ -36,14 +36,14 @@ public class PlaceController {
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping({"/admin/place"})
     public String showPlaces(ModelMap model) {
         model.addAttribute("placeList", placeSer.getAllPlaces());
         return "admin/places/index";
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/place/{name}", method = RequestMethod.GET)
     public String editUser(@PathVariable String name, ModelMap model) {
         model.addAttribute("place", placeSer.getPlace(name));
         model.addAttribute("banList", placeSer.getBannedUsers(name));
@@ -53,7 +53,7 @@ public class PlaceController {
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/{name}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/admin/place/{name}", method = RequestMethod.PUT)
     public String updateUser(@ModelAttribute Place place) {
 //        Set<User> users = new HashSet<User>();
 //        for (String name : bannedUsers) {
@@ -61,11 +61,11 @@ public class PlaceController {
 //        }
 //        place.setBannedUsers(users);
         placeSer.editPlace(place);
-        return "redirect:/place/";
+        return "redirect:/admin/place/";
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/place/create", method = RequestMethod.GET)
     public String createUser(ModelMap model) {
         model.addAttribute("place", new Place());
         model.addAttribute("userList", userSer.getAllUsers());
@@ -73,16 +73,16 @@ public class PlaceController {
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/place/create", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute Place place) {
         placeSer.addPlace(place);
-        return "redirect:/place/";
+        return "redirect:/admin/place";
     }
 
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/admin/place/delete", method = RequestMethod.DELETE)
     public String deleteUser(@RequestParam("id") int id) {
         placeSer.deletePlace(id);
-        return "redirect:/place/";
+        return "redirect:/admin/place/";
     }
 }

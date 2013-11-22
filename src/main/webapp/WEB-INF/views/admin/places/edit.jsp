@@ -20,7 +20,7 @@
         <c:forEach items="${banList}" var="user" begin="0">
             ${user}<br>
         </c:forEach>           
-        <f:form method="put" action="${pageContext.request.contextPath}/place/edit" modelAttribute="place">
+        <f:form method="put" action="${pageContext.request.contextPath}/admin/place/edit" modelAttribute="place">
             <f:hidden path="id" />
             <f:errors path="*" cssClass="error" element="div" />
             <f:label path="name">Nimi: </f:label><f:input path="name" cssClass="input-large"></f:input><br />

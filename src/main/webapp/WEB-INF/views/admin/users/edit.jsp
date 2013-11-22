@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                <f:form action="${pageContext.request.contextPath}/user/${user.username}" method="PUT" modelAttribute="user">
+                <f:form action="${pageContext.request.contextPath}/admin/user/${user.username}" method="PUT" modelAttribute="user">
                     <f:hidden path="id" />
                     <f:hidden path="password" />
                     <tr>

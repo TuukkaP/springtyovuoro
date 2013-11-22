@@ -6,18 +6,18 @@ import tyovuoro.model.Role;
 
 public interface RoleDAO {
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Role getRole(int id);
 
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
+//    @PreAuthorize("hasRole('ROLE_MODERATOR')")
     public void editRole(Role role);
 
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
+//    @PreAuthorize("hasRole('ROLE_MODERATOR')")
     public void addRole(Role role);
 
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
+//    @PreAuthorize("hasRole('ROLE_MODERATOR')")
     public void deleteRole(int id);
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List getAllRoles();
 }

@@ -2,6 +2,7 @@ package tyovuoro.controller;
 
 import java.util.Collection;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class StaticPagesController {
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping({"/", "/home"})
     public String showHomePage(ModelMap model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -22,11 +24,13 @@ public class StaticPagesController {
         return "static/home";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping({"/info"})
     public String showInfoPage() {
         return "static/info";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping({"/404"})
     public String errorPage() {
         return "static/error";

@@ -12,7 +12,7 @@
     <body>
         <H1>Paikkojen lisääminen</h1>
 
-        <f:form method="post" action="${pageContext.request.contextPath}/place/create" modelAttribute="place">
+        <f:form method="post" action="${pageContext.request.contextPath}/admin/place/create" modelAttribute="place">
             <f:errors path="*" cssClass="error" element="div" />
             <f:label path="name">Nimi: </f:label><f:input path="name" cssClass="input-large"></f:input><br />
             <f:label path="address">Osoite: </f:label><f:input path="address" cssClass="input-large"></f:input><br />

@@ -23,7 +23,7 @@
                     <th></th>
                 </tr>
             </thead>                
-            <f:form action="${pageContext.request.contextPath}/user/create" method="POST" modelAttribute="user">
+            <f:form action="${pageContext.request.contextPath}/admin/user/create" method="POST" modelAttribute="user">
                 <f:errors path="*" cssClass="error" element="div" />
                 <tbody>
                     <tr>

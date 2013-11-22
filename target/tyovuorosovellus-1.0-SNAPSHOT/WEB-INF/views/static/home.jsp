@@ -20,10 +20,11 @@
             <ul>
                 <li>showUser if user.name = GET(name)</li>
                 <li>Muuta kaikki preauthorizeks</li>
+                <li>Korjaa admin oma admin/user/ ja käyttäjille vain user/</li>
             </ul>
             <li>Käyttäjien puoli kokonaan</li>
             <li>Työvuorotoiveet</li>
-            <li>Syötteiden tarkistus</li>
+            <li><strong>Syötteiden tarkistus</strong></li>
             <li>Testit</li>
             <ul>
                 <li>Integraatiotestit käyttötapauksille (selenium)</li>
@@ -32,6 +33,7 @@
             </ul>
             <li>Automaattinen buildaus ja testaus (heroku tai jenkins)</li>
             <li>Ulkoasun viilaus</li>
+            <li>Apteekin roolitukset ja sivut.</li>
         </ul>
         ${role}<br>
         <sec:authorize access="hasRole('ROLE_MODERATOR')">

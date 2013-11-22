@@ -28,10 +28,10 @@
                         <td>${place.address}</td>
                         <td>${place.info}</td>
                         <td> 
-                            <form action="${pageContext.request.contextPath}/place/${place.name}">
+                            <form action="${pageContext.request.contextPath}/admin/place/${place.name}">
                                 <input type="submit" value="Muokkaa" class="btn btn-warning">
                             </form></td>
-                        <td><f:form action="${pageContext.request.contextPath}/place/delete" method="DELETE" onsubmit="return confirm('Haluatko varmasti poistaa käyttäjän: ${place.name} ?');">
+                        <td><f:form action="${pageContext.request.contextPath}/admin/place/delete" method="DELETE" onsubmit="return confirm('Haluatko varmasti poistaa käyttäjän: ${place.name} ?');">
                                 <input type="hidden" name="id" value="${place.id}">
                                 <input type="submit" value="Poista" class="btn btn-danger" />
                             </f:form></td>
@@ -40,7 +40,7 @@
 
         </table>            
         <br>
-        <form action="${pageContext.request.contextPath}/place/create">
+        <form action="${pageContext.request.contextPath}/admin/place/create">
             <input type="submit" value="Lisää uusi paikka" class="btn btn-large">
         </form>
     </body>

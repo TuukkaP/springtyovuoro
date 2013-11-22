@@ -8,24 +8,24 @@ import tyovuoro.model.User;
 public interface UserService {
 
 //    @PreAuthorize("#contact.name == authentication.name")
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("authentication or hasRole('ROLE_ADMIN') or #username == authentication.name")
     public User getUser(String username);
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("authentication or hasRole('ROLE_ADMIN')")
     public User getUser(int id);
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void saveUser(User user);
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or #user.username == authentication.name")
     public void updateUser(User user);
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteUser(int id);
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List getAllUsers();
     
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List getUser(int[] user_ids);
 }
