@@ -24,7 +24,7 @@
                 </tr>
             </thead>                
             <f:form action="${pageContext.request.contextPath}/admin/user/create" method="POST" modelAttribute="user">
-                <f:errors path="*" cssClass="error" element="div" />
+                <f:errors path="*" cssClass="alert alert-danger" element="div" />
                 <tbody>
                     <tr>
                         <td>

@@ -6,7 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/css/sticky-footer-navbar.css" rel="stylesheet">
+        <!--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.custom.min.css" />-->
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jQuery.js"></script>
+        <!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.custom.min.js"></script>-->
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
         <title>Työvuorosovellus :: <decorator:title /></title>
+        <decorator:head />
     </head>
     <body>
         <div id="wrap">
@@ -65,7 +70,6 @@
                 </p>
             </div>
         </div>
-        <script src="${pageContext.request.contextPath}/resources/js/jQuery.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+
     </body>
 </html>

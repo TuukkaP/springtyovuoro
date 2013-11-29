@@ -17,7 +17,7 @@
     <context:component-scan base-package="tyovuoro.service" />-->
     
     <context:property-placeholder location="classpath*:application.properties" /> 
-
+    <context:component-scan base-package="tyovuoro" />
     <bean id="dataSource" 
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${db.driver}" />
@@ -43,7 +43,7 @@
     </bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
-    <context:component-scan base-package="tyovuoro" />
+    
     
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>

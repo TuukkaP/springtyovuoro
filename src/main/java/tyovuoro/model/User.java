@@ -1,10 +1,8 @@
 package tyovuoro.model;
 
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,6 +11,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -21,18 +24,25 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
+    @NotBlank @Length(min=5, max=15)
     private String username;
+    @NotBlank @Length(min=8, max=25)
     private String password;
+    @NotNull
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_roles",
             joinColumns = {
-        @JoinColumn(name = "user_id", referencedColumnName = "id")},
+                @JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {
-        @JoinColumn(name = "role_id", referencedColumnName = "id")})
+                @JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Role role;
+    @NotBlank @Length(min=2, max=25)
     private String firstname;
+    @NotBlank @Length(min=2, max=25)
     private String lastname;
+    @NotBlank @Email
     private String email;
+    @Length(min=2, max=50)
     private String address;
     @ManyToMany(mappedBy = "bannedUsers")
 //    @JoinTable(name = "banned_users",
@@ -60,6 +70,7 @@ public class User {
         this.username = username;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -68,6 +79,7 @@ public class User {
         this.password = password;
     }
 
+    @JsonIgnore
     public Role getRole() {
         return role;
     }
@@ -108,6 +120,7 @@ public class User {
         this.address = address;
     }
 
+    @JsonIgnore
     public Set<Place> getBannedPlaces() {
         return bannedPlaces;
     }
@@ -116,6 +129,7 @@ public class User {
         this.bannedPlaces = bannedPlaces;
     }
 
+    @JsonIgnore
     public Set<Order> getOrders() {
         return orders;
     }

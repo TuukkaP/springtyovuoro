@@ -1,7 +1,9 @@
 package tyovuoro.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 import org.joda.time.DateTime;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tyovuoro.model.Order;
 import tyovuoro.model.User;
@@ -66,8 +69,8 @@ public class OrderController {
         model.addAttribute("kuukausi", kuukausi);
         return "admin/orders/index";
     }
-    
-        @PreAuthorize("isAuthenticated()")
+
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String userShowOrders(ModelMap model) {
         DateTime dt = new DateTime().withTimeAtStartOfDay();
@@ -102,6 +105,24 @@ public class OrderController {
         model.addAttribute("placeList", placeSer.getAllPlaces());
         model.addAttribute("vacantUsers", orderSer.getVacantUsersForOrder(order));
         return "admin/orders/edit";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/admin/order/{day}.{month}.{year}/orders.json", method = RequestMethod.GET)
+    public @ResponseBody
+    List getJsonOrdersForDate(@PathVariable int day, @PathVariable int month, @PathVariable int year) {
+        List<Order> orderList = orderSer.getOrdersDate(new DateTime(year, month, day, 0, 0));
+        ArrayList<Map> list = new ArrayList<Map>();
+        for (Order order : orderList) {
+            HashMap<String, String> temp = new HashMap<String, String>();
+            temp.put("id", order.getId().toString());
+            temp.put("user", order.getUser().getFirstname() + ", " + order.getUser().getLastname());
+            temp.put("place", order.getPlace().getName());
+            temp.put("date", order.getDate().toString("dd.MM.yyyy"));
+            temp.put("time", order.getOrder_start().toString("HH:mm") + "-" + order.getOrder_end().toString("HH:mm"));
+            list.add(temp);
+        }
+        return list;
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

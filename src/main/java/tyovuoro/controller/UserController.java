@@ -1,15 +1,13 @@
 package tyovuoro.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +38,11 @@ public class UserController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/user/{username}", method = RequestMethod.PUT)
-    public String updateUser(@RequestParam("role.id") int id, @ModelAttribute User user, RedirectAttributes redirectAttributes) {
+    public String updateUser(@RequestParam("role.id") int id, @ModelAttribute @Valid User user, RedirectAttributes redirectAttributes, BindingResult result, ModelMap model) {
         user.setRole(roleSer.getRole(id));
+        if (result.hasErrors()) {
+            return "user/index";
+        }
         userSer.updateUser(user);
         redirectAttributes.addFlashAttribute("message", "Käyttäjätiedot päivitetty!");
         return "redirect:/user/";
@@ -65,8 +66,12 @@ public class UserController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/user/{username}", method = RequestMethod.PUT)
-    public String adminUpdateUser(@RequestParam("role.id") int id, @ModelAttribute User user) {
+    public String adminUpdateUser(@RequestParam("role.id") int id, @ModelAttribute @Valid User user, BindingResult result, ModelMap model) {
         user.setRole(roleSer.getRole(id));
+        if (result.hasErrors()) {
+            model.addAttribute("roleList", roleSer.getAllRoles());
+            return "admin/users/edit";
+        }
         userSer.updateUser(user);
         return "redirect:/user/";
     }
@@ -81,8 +86,12 @@ public class UserController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
-    public String adminSaveUser(@RequestParam("assigned_role") int id, @ModelAttribute User user) {
+    public String adminSaveUser(@RequestParam("assigned_role") int id, @ModelAttribute @Valid User user, BindingResult result, ModelMap model) {
         user.setRole(roleSer.getRole(id));
+        if (result.hasErrors()) {
+            model.addAttribute("roleList", roleSer.getAllRoles());
+            return "admin/users/create";
+        }
         userSer.saveUser(user);
         return "redirect:/user/";
     }

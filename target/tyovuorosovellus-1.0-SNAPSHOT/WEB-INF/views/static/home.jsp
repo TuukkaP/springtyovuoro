@@ -17,6 +17,7 @@
         <h3>ToDo</h3>
         <ul>
             <li>Roolien mukainen metodien käyttö (security)</li>
+            <li>Jos tilauksen pvm vaihdetaan myös ko. päivän vuorot haetaan.</li>
             <ul>
                 <li>showUser if user.name = GET(name)</li>
                 <li>Muuta kaikki preauthorizeks</li>
