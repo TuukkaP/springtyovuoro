@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -24,11 +26,10 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
-    @NotBlank @Length(min=5, max=15)
+    @NotBlank @Length(min=3, max=15)
     private String username;
-    @NotBlank @Length(min=8, max=25)
+    @NotBlank @Length(min=8)
     private String password;
-    @NotNull
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_roles",
             joinColumns = {
@@ -42,7 +43,7 @@ public class User {
     private String lastname;
     @NotBlank @Email
     private String email;
-    @Length(min=2, max=50)
+    @Length(max=50)
     private String address;
     @ManyToMany(mappedBy = "bannedUsers")
 //    @JoinTable(name = "banned_users",

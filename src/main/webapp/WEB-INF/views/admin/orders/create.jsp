@@ -28,9 +28,14 @@
                             $("#panel-title").empty().append("Vuorot " + $("#date").val());
                             $("#todaysOrdersTableBody").empty();
                             $.getJSON('${pageContext.request.contextPath}/admin/order/' + $("#date").val() + '/orders.json', function(data) {
-                                $.each(data, function(k, v) {
-                                    $("#todaysOrdersTableBody").append("<tr><td>" + v.user + "</td><td>" + v.place + "</td><td>" + v.time + "</td></tr>");
-                                });
+                                if ($.isEmptyObject(data)) {
+                                    $("#todaysOrdersTableBody").append("<tr><td colspan='3'>Ei vuoroja tälle päivälle.</td></tr>");
+                                }
+                                else {
+                                    $.each(data, function(k, v) {
+                                        $("#todaysOrdersTableBody").append("<tr><td>" + v.user + "</td><td>" + v.place + "</td><td>" + v.time + "</td></tr>");
+                                    });
+                                }
                                 $("#panel-footer").empty().append("Yhteensä " + data.length + " vuoroa.");
                             });
                         });
@@ -85,9 +90,9 @@
                 <tbody>
                     <tr>
                         <td>
-                            <f:form method="post" action="${pageContext.request.contextPath}/admin/order/create" modelAttribute="order">
-                                <f:errors path="*" cssClass="error" element="div" />
+                            <f:form method="post" action="${pageContext.request.contextPath}/admin/order/create/${order.date.toString('dd.MM.yyyy')}" modelAttribute="order">
                                 <f:input path="date" cssClass="input-block-level" data-date-format="dd.mm.yyyy"></f:input>
+                                <f:errors path="date" cssClass="alert alert-danger" element="div" />
                                 </td>
                                 <td>
                                 <f:select path="place.id">
@@ -101,10 +106,12 @@
                                 </f:select>
                             </td>
                             <td>
-                                <f:input path="order_start" cssClass="input-block-level"></f:input>
+                                <f:input path="order_start" cssClass="input-block-level" placeholder="Esim. 09:45"></f:input>
+                                <f:errors path="order_start" cssClass="alert alert-danger" element="div" />
                                 </td>
                                 <td>
-                                <f:input path="order_end" cssClass="input-block-level"></f:input>
+                                <f:input path="order_end" cssClass="input-block-level" placeholder="Esim. 17:15"></f:input>
+                                <f:errors path="order_end" cssClass="alert alert-danger" element="div" />
                                 </td>
                                 <td>        
                                     <input type="submit" value="Lisää" class="btn btn-primary" />

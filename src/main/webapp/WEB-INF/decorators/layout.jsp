@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/css/sticky-footer-navbar.css" rel="stylesheet">
-        <!--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.custom.min.css" />-->
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jQuery.js"></script>
-        <!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.custom.min.js"></script>-->
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
         <title>Työvuorosovellus :: <decorator:title /></title>
         <decorator:head />
@@ -40,11 +38,8 @@
                                 <c:choose>
                                     <c:when test="${admin == null}">
                                         <sec:authorize access="hasRole('ROLE_USER')" >
-                                        <li <%if (pageName.equals("user")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/user/<sec:authentication property="principal.username"/>">Käyttäjät</a></li>
-                                        <li <%if (pageName.equals("info")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/info">Info</a></li>
+                                        <li <%if (pageName.equals("user")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/user/<sec:authentication property="principal.username"/>">Käyttäjätiedot</a></li>
                                         <li <%if (pageName.equals("order")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/order">Tilaukset</a></li>
-                                    </ul>
-                                    <ul class="nav navbar-nav navbar-right"><li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Kirjaudu ulos</a></li></ul>   
                                         </sec:authorize>
                                     </c:when>
                                     <c:otherwise>
@@ -52,11 +47,11 @@
                                     <li <%if (pageName.equals("user")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/admin/user">Käyttäjät</a></li>
                                     <li <%if (pageName.equals("place")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/admin/place">Paikat</a></li>
                                     <li <%if (pageName.equals("info")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/info">Info</a></li>
-                                    <li <%if (pageName.equals("order")) {%>class="active"<% }%>><a href="${pageContext.request.contextPath}/admin/order">Tilaukset</a></li>
-                                    </ul>
-                                    <ul class="nav navbar-nav navbar-right"><li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Kirjaudu ulos</a></li></ul>   
+                                    <li <%if (pageName.equals("order")) {%>class="active"<% }%>><a href="${pageContext.request.contextPath}/admin/order">Tilaukset</a></li>                    
                                         </sec:authorize></c:otherwise>
                                 </c:choose>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right"><li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Kirjaudu ulos</a></li></ul>  
                     </div>
                 </div>
             </div>

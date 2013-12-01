@@ -53,6 +53,14 @@ a {
     background: transparent;
 }
 
+a:link {
+    color:black;
+} 
+
+a:visited {
+    color:black;
+
+}
 a:focus {
     outline: thin dotted;
 }
@@ -7117,5 +7125,14 @@ td.visible-print {
     position: relative;
     font-size: 16px;
     height: auto;
+}
+
+.table-no-border>thead>tr>th, 
+.table-no-border>tbody>tr>th, 
+.table-no-border>tfoot>tr>th, 
+.table-no-border>thead>tr>td, 
+.table-no-border>tbody>tr>td, 
+.table-no-border>tfoot>tr>td {
+    border-top: none; 
 }
 

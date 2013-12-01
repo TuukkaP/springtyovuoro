@@ -3,14 +3,13 @@ package tyovuoro.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
+import javax.validation.Valid;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tyovuoro.model.Order;
-import tyovuoro.model.User;
 import tyovuoro.service.OrderService;
 import tyovuoro.service.PlaceService;
 import tyovuoro.service.UserService;
@@ -43,32 +41,6 @@ public class OrderController {
     private String[] viikko = {"Viikonpäivät", "Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai", "Sunnuntai"};
     private String[] kuukausi = {"Kuukaudet", "Tammikuu", "Helmikuu", "Maaliskuu", "Huhtikuu", "Toukokuu", "Kesäkuu", "Heinäkuu",
         "Elokuu", "Syyskuu", "Lokakuu", "Marraskuu", "Joulukuu"};
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/admin/order", method = RequestMethod.GET)
-    public String adminShowOrders(ModelMap model) {
-        DateTime dt = new DateTime().withTimeAtStartOfDay();
-        DateTime first = new DateTime(dt).withDayOfMonth(1);
-        DateTime last = new DateTime(first).withDayOfMonth(first.dayOfMonth().getMaximumValue());
-        model.addAttribute("dt", dt);
-        model.addAttribute("orderList", listFormation(dt, orderSer.getOrdersDate(first, last)));
-        model.addAttribute("viikko", viikko);
-        model.addAttribute("kuukausi", kuukausi);
-        return "admin/orders/index";
-    }
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/admin/order/{day}.{month}.{year}", method = RequestMethod.GET)
-    public String adminShowFromDate(@PathVariable int day, @PathVariable int month, @PathVariable int year, ModelMap model) {
-        DateTime dt = new DateTime(year, month, day, 0, 0);
-        DateTime first = new DateTime(dt).withDayOfMonth(1);
-        DateTime last = new DateTime(first).withDayOfMonth(first.dayOfMonth().getMaximumValue());
-        model.addAttribute("dt", dt);
-        model.addAttribute("orderList", listFormation(dt, orderSer.getOrdersDate(first, last)));
-        model.addAttribute("viikko", viikko);
-        model.addAttribute("kuukausi", kuukausi);
-        return "admin/orders/index";
-    }
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/order", method = RequestMethod.GET)
@@ -97,13 +69,39 @@ public class OrderController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/admin/order", method = RequestMethod.GET)
+    public String adminShowOrders(ModelMap model) {
+        DateTime dt = new DateTime().withTimeAtStartOfDay();
+        DateTime first = new DateTime(dt).withDayOfMonth(1);
+        DateTime last = new DateTime(first).withDayOfMonth(first.dayOfMonth().getMaximumValue());
+        model.addAttribute("dt", dt);
+        model.addAttribute("orderList", listFormation(dt, orderSer.getOrdersDate(first, last)));
+        model.addAttribute("viikko", viikko);
+        model.addAttribute("kuukausi", kuukausi);
+        return "admin/orders/index";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/admin/order/{day}.{month}.{year}", method = RequestMethod.GET)
+    public String adminShowFromDate(@PathVariable int day, @PathVariable int month, @PathVariable int year, ModelMap model) {
+        DateTime dt = new DateTime(year, month, day, 0, 0);
+        DateTime first = new DateTime(dt).withDayOfMonth(1);
+        DateTime last = new DateTime(first).withDayOfMonth(first.dayOfMonth().getMaximumValue());
+        model.addAttribute("dt", dt);
+        model.addAttribute("orderList", listFormation(dt, orderSer.getOrdersDate(first, last)));
+        model.addAttribute("viikko", viikko);
+        model.addAttribute("kuukausi", kuukausi);
+        return "admin/orders/index";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/order/edit/{id}", method = RequestMethod.GET)
     public String adminEditOrder(@PathVariable int id, ModelMap model) {
         Order order = orderSer.getOrderId(id);
         model.addAttribute("order", order);
         model.addAttribute("OrdersForToday", orderSer.getOrdersDate(order.getDate().toDateTime()));
         model.addAttribute("placeList", placeSer.getAllPlaces());
-        model.addAttribute("vacantUsers", orderSer.getVacantUsersForOrder(order));
+        model.addAttribute("vacantUsers", placeSer.getValidUsers(order.getPlace().getName()));
         return "admin/orders/edit";
     }
 
@@ -127,8 +125,11 @@ public class OrderController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/order/edit/{id}", method = RequestMethod.PUT)
-    public String adminUpdateOrder(@PathVariable int id, @ModelAttribute Order order, BindingResult bind, ModelMap model, RedirectAttributes redirectAttributes) {
+    public String adminUpdateOrder(@PathVariable int id, @ModelAttribute @Valid Order order, BindingResult bind, ModelMap model, RedirectAttributes redirectAttributes) {
         if (bind.hasErrors()) {
+            model.addAttribute("OrdersForToday", orderSer.getOrdersDate(order.getDate().toDateTime()));
+            model.addAttribute("placeList", placeSer.getAllPlaces());
+            model.addAttribute("vacantUsers", placeSer.getValidUsers(order.getPlace().getName()));
             return "admin/orders/edit/" + id;
         }
         if (order.getUser().getId() == 0) {
@@ -136,7 +137,7 @@ public class OrderController {
         }
         orderSer.editOrder(order);
         redirectAttributes.addFlashAttribute("message", "Vuoroa muokattu " + order);
-        return "redirect:/admin/order/";
+        return "redirect:/admin/order/" + order.getDate().toString("dd.MM.yyyy");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -148,14 +149,18 @@ public class OrderController {
         model.addAttribute("order", order);
         model.addAttribute("OrdersForToday", orderSer.getOrdersDate(dt));
         model.addAttribute("placeList", placeSer.getAllPlaces());
-        model.addAttribute("vacantUsers", orderSer.getVacantUsersForDate(dt));
+        model.addAttribute("vacantUsers", userSer.getAllUsers());
         return "admin/orders/create";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/admin/order/create", method = RequestMethod.POST)
-    public String adminSaveOrder(@ModelAttribute Order order, BindingResult bind, ModelMap model, RedirectAttributes redirectAttributes) {
+    @RequestMapping(value = "/admin/order/create/{day}.{month}.{year}", method = RequestMethod.POST)
+    public String adminSaveOrder(@PathVariable int day, @PathVariable int month, @PathVariable int year, @ModelAttribute @Valid Order order, BindingResult bind, ModelMap model, RedirectAttributes redirectAttributes) {
         if (bind.hasErrors()) {
+            DateTime dt = new DateTime(year, month, day, 0, 0);
+            model.addAttribute("OrdersForToday", orderSer.getOrdersDate(dt));
+            model.addAttribute("placeList", placeSer.getAllPlaces());
+            model.addAttribute("vacantUsers", orderSer.getVacantUsersForDate(dt));
             return "admin/orders/create";
         }
         if (order.getUser().getId() == 0) {

@@ -11,6 +11,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "places")
@@ -19,19 +21,26 @@ public class Place {
     @Id
     @GeneratedValue
     private Integer id;
+    @NotBlank
+    @Length(min = 2, max = 15)
     private String name;
+    @Length(max = 15)
+    private String phone;
+    @Length(max = 25)
+    private String contact;
+    @Length(min = 2, max = 50)
     private String address;
+    @Length(max = 500)
     private String info;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "banned_users",
             joinColumns = {
-        @JoinColumn(name = "place_id")},
+                @JoinColumn(name = "place_id")},
             inverseJoinColumns = {
-        @JoinColumn(name = "user_id")})
+                @JoinColumn(name = "user_id")})
     private Set<User> bannedUsers;
-    @OneToMany(mappedBy="place", cascade=CascadeType.PERSIST) 
+    @OneToMany(mappedBy = "place", cascade = CascadeType.PERSIST)
     private Set<Order> orders;
-    
 
     public Place() {
     }
@@ -50,6 +59,22 @@ public class Place {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getAddress() {
@@ -83,6 +108,5 @@ public class Place {
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
-    
-    
+
 }

@@ -10,64 +10,78 @@
         <title>Käyttäjä</title>
     </head>
     <body>
-        <table class="table">
-            <thead> 
-                <tr><td><h3>Käyttäjätiedot</h3></td></tr>
-                <tr>
-                    <th><br><br>Käyttäjänimi</th>
-                    <th>Etunimi</th>
-                    <th>Sukunimi</th>
-                    <th>Osoite</th>
-                    <th>Email</th>
-                    <th>Käyttöoikeus</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <f:form action="${pageContext.request.contextPath}/admin/user/${user.username}" method="PUT" modelAttribute="user">
-                    <f:hidden path="id" />
-                    <f:hidden path="password" />
-                    <tr>
-                        <td>
-                            <f:input path="username" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.username}" name="username" class="input-block-level">-->
-                        </td>
-                        <td>
-                            <f:input path="firstname" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.firstname}" name="firstname" class="">-->
-                        </td>
-                        <td>
-                            <f:input path="lastname" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.lastname}" name="lastname" class="input-block-level">-->
-                        </td>
-                        <td>
-                            <f:input path="address" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.address}" name="address" class="input-block-level">-->
-                        </td>
-                        <td>
-                            <f:input path="email" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.email}" name="email" class="input-block-level">-->
-                        </td>
-                        <td>
-                            <f:select path="role.id">
-                                <f:options items="${roleList}" itemLabel="role_name" itemValue="id"/>
-                            </f:select>                     
-                        </td>
-                        <td>
-                            <input type="submit" value="Päivitä" class="btn btn-primary" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h3>Bannilista</h3>
-                            <ul>
-                            <c:forEach var="place" items="${user.bannedPlaces}">
-                                <li><c:out value="${place.name}"/></li>
-                            </c:forEach>
-                            </ul>
-                            </td>
-                    </tr>
-                </f:form>                            
-        </table>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>Käyttäjätiedot</h1>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-no-border">
+                        <thead> 
+                            <tr>
+                                <th>Käyttäjänimi</th>
+                                <th>Etunimi</th>
+                                <th>Sukunimi</th>
+                                <th>Osoite</th>
+                                <th>Email</th>
+                                <th>Käyttöoikeus</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <f:form action="${pageContext.request.contextPath}/admin/user/${user.username}" method="PUT" modelAttribute="user" class="form-horizontal" role="form">
+                                <f:errors path="*" cssClass="alert alert-danger" element="div" />
+                                <f:hidden path="id" />
+                                <f:hidden path="password" />
+                                <tr>
+                                    <td>
+                                        <f:label path="username" class="sr-only" for="username">Käyttäjätunnus</f:label>
+                                        <f:input path="username" cssClass="form-control" placeholder="Käyttäjätunnus"></f:input>
+                                        <f:errors path="username" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:label path="firstname" class="sr-only" for="firstname">Etunimi</f:label>
+                                        <f:input path="firstname" cssClass="form-control" placeholder="Etunimi"></f:input>
+                                        <f:errors path="firstname" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:label path="lastname" class="sr-only" for="lastname">Sukunimi</f:label>
+                                        <f:input path="lastname" cssClass="form-control" placeholder="Sukunimi"></f:input>
+                                        <f:errors path="lastname" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:label path="address" class="sr-only" for="address">Osoite</f:label>
+                                        <f:input path="address" cssClass="form-control" placeholder="Osoite"></f:input>
+                                        <f:errors path="address" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:label path="email" class="sr-only" for="email">Email</f:label>
+                                        <f:input path="email" cssClass="form-control" placeholder="Email"></f:input>
+                                        <f:errors path="email" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:select path="role.id" cssClass="form-control">
+                                            <f:options items="${roleList}" itemLabel="role_name" itemValue="id"/>
+                                        </f:select>                     
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Päivitä" class="btn btn-primary" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <h3>Paikkarajoitukset</h3>
+                                        <ul>
+                                            <c:forEach var="place" items="${user.bannedPlaces}">
+                                                <li><c:out value="${place.name}"/></li>
+                                                </c:forEach>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </f:form>                            
+                    </table>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

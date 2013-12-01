@@ -12,9 +12,11 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotBlank;
 import org.joda.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,14 +38,17 @@ public class Order {
     @NotFound(action = NotFoundAction.IGNORE)
     private User user;
     @Column
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     @DateTimeFormat(pattern = "dd.MM.yyyy")
     private LocalDateTime date;
     @Column
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     @DateTimeFormat(pattern = "HH:mm")
     private LocalDateTime order_start;
     @Column
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     @DateTimeFormat(pattern = "HH:mm")
     private LocalDateTime order_end;

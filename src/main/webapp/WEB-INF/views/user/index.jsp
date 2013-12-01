@@ -10,55 +10,67 @@
         <title>Käyttäjä</title>
     </head>
     <body>
-        <table class="table">
-            <thead> 
-                <tr><td><h3>Käyttäjätiedot</h3>
-                    </td></tr>
-                <tr>
-                <c:if test="${message != null}">
-                <tr>
-                    <td colspan="6"><p class="text-success">${message}</p></td>
-                </tr>
-                </c:if>
-                    <th><br><br>Käyttäjänimi</th>
-                    <th>Etunimi</th>
-                    <th>Sukunimi</th>
-                    <th>Osoite</th>
-                    <th>Email</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <f:form action="${pageContext.request.contextPath}/user/${user.username}" method="PUT" modelAttribute="user">
-                    <f:hidden path="id" />
-                    <f:hidden path="password" />
-                    <f:hidden path="role.id" />
-                    <tr>
-                        <td>
-                            <f:input path="username" cssClass="input-block-level" readonly="true"></f:input>
-                            <!--<input type="text" value="${user.username}" name="username" class="input-block-level">-->
-                        </td>
-                        <td>
-                            <f:input path="firstname" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.firstname}" name="firstname" class="">-->
-                        </td>
-                        <td>
-                            <f:input path="lastname" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.lastname}" name="lastname" class="input-block-level">-->
-                        </td>
-                        <td>
-                            <f:input path="address" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.address}" name="address" class="input-block-level">-->
-                        </td>
-                        <td>
-                            <f:input path="email" cssClass="input-block-level"></f:input>
-                            <!--<input type="text" value="${user.email}" name="email" class="input-block-level">-->
-                        </td>
-                        <td>
-                            <input type="submit" value="Päivitä" class="btn btn-primary" />
-                        </td>
-                    </tr>
-                </f:form>                            
-        </table>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>Käyttäjätiedot</h1>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-no-border">
+                        <thead> 
+                            <tr>
+                                <c:if test="${message != null}">
+                                <tr>
+                                    <td colspan="6"><p class="text-success">${message}</p></td>
+                                </tr>
+                            </c:if>
+                        <th><br><br>Käyttäjänimi</th>
+                        <th>Etunimi</th>
+                        <th>Sukunimi</th>
+                        <th>Osoite</th>
+                        <th>Email</th>
+                        <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <f:form action="${pageContext.request.contextPath}/user/${user.username}" method="PUT" modelAttribute="user">
+                                <f:hidden path="id" />
+                                <f:hidden path="password" />
+                                <f:hidden path="role.id" />
+                                <tr>
+                                    <td>
+                                        <f:label path="username" class="sr-only" for="username">Käyttäjätunnus</f:label>
+                                        <f:input path="username" cssClass="form-control" readonly="true"></f:input>
+                                        <f:errors path="username" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:label path="firstname" class="sr-only" for="firstname">Etunimi</f:label>
+                                        <f:input path="firstname" cssClass="form-control"></f:input>
+                                        <f:errors path="firstname" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:label path="lastname" class="sr-only" for="lastname">Sukunimi</f:label>
+                                        <f:input path="lastname" cssClass="form-control"></f:input>
+                                        <f:errors path="lastname" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:label path="address" class="sr-only" for="address">Osoite</f:label>
+                                        <f:input path="address" cssClass="form-control"></f:input>
+                                        <f:errors path="address" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <f:label path="email" class="sr-only" for="email">Email</f:label>
+                                        <f:input path="email" cssClass="form-control"></f:input>
+                                        <f:errors path="email" cssClass="alert alert-danger" element="div"  />
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Päivitä" class="btn btn-primary" />
+                                    </td>
+                                </tr>
+                            </f:form>                            
+                    </table>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

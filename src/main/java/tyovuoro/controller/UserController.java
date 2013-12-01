@@ -38,7 +38,7 @@ public class UserController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/user/{username}", method = RequestMethod.PUT)
-    public String updateUser(@RequestParam("role.id") int id, @ModelAttribute @Valid User user, RedirectAttributes redirectAttributes, BindingResult result, ModelMap model) {
+    public String updateUser(@RequestParam("role.id") int id, @ModelAttribute @Valid User user, BindingResult result, RedirectAttributes redirectAttributes,  ModelMap model) {
         user.setRole(roleSer.getRole(id));
         if (result.hasErrors()) {
             return "user/index";
@@ -73,7 +73,7 @@ public class UserController {
             return "admin/users/edit";
         }
         userSer.updateUser(user);
-        return "redirect:/user/";
+        return "redirect:/admin/user/";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

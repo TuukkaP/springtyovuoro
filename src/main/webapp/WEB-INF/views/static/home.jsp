@@ -15,29 +15,19 @@
         <h1>Tervetuloa ${username} </h1>
 
         <h3>ToDo</h3>
-        <ul>
-            <li>Roolien mukainen metodien käyttö (security)</li>
-            <li>Jos tilauksen pvm vaihdetaan myös ko. päivän vuorot haetaan.</li>
-            <ul>
-                <li>showUser if user.name = GET(name)</li>
-                <li>Muuta kaikki preauthorizeks</li>
-                <li>Korjaa admin oma admin/user/ ja käyttäjille vain user/</li>
-            </ul>
-            <li>Käyttäjien puoli kokonaan</li>
-            <li>Työvuorotoiveet</li>
-            <li><strong>Syötteiden tarkistus</strong></li>
-            <li>Testit</li>
+        <ol>
+            <li><strong>Testit</strong></li>
             <ul>
                 <li>Integraatiotestit käyttötapauksille (selenium)</li>
                 <li>Mock junit testit serviceille</li>
                 <li>Spring MVC testit osoitteille</li>
             </ul>
-            <li>Automaattinen buildaus ja testaus (heroku tai jenkins)</li>
             <li>Ulkoasun viilaus</li>
             <li>Apteekin roolitukset ja sivut.</li>
-            <li>Uutta tilausta tehtäessä pitäisi tarkistaa aina paikan valitsemisen jälkeen bannilista. </li>
-            <li>MUISTA LOPUKSI SALAUS HTTPS!! </li>
-        </ul>
+            <li>HTTPS!! </li>
+            <li>Automaattinen buildaus ja testaus (heroku tai jenkins)</li>
+            <li>Työvuorotoiveet</li>
+        </ol>
         ${role}<br>
         <sec:authorize access="hasRole('ROLE_MODERATOR')">
             Moderator<br>
