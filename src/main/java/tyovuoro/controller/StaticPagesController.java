@@ -31,8 +31,12 @@ public class StaticPagesController {
         return "static/info";
     }
 
-    @PreAuthorize("isAuthenticated()")
-    @RequestMapping({"/404"})
+    /**
+     * Virheet ohjautuvat tällä hetkellä kaikki tähän metodiin. 
+     * Virheiden käsittelyä tulee työstää kuhan keritään.
+     * @return static/error Virhesivu
+     */
+    @RequestMapping({"/404", "/error"})
     public String errorPage() {
         return "static/error";
     }

@@ -25,7 +25,12 @@
             <li>Ulkoasun viilaus</li>
             <li>Apteekin roolitukset ja sivut.</li>
             <li>HTTPS!! </li>
+            <li>Virheiden käsittely esim. SimpleMappingExceptionResolver</li>
+            <ul>
+            <li>Esim. virheellisen tilauksen haussa tulee nullpointer exception</li>
+            </ul>
             <li>Automaattinen buildaus ja testaus (heroku tai jenkins)</li>
+            <li>Remember me -sisäänkirjaus?</li>
             <li>Työvuorotoiveet</li>
         </ol>
         ${role}<br>
