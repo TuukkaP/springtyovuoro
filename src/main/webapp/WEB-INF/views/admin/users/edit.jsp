@@ -72,7 +72,7 @@
                                     <td colspan="4">
                                         <h3>Paikkarajoitukset</h3>
                                         <ul>
-                                            <c:forEach var="place" items="${user.bannedPlaces}">
+                                            <c:forEach var="place" items="${bannedPlaces}">
                                                 <li><c:out value="${place.name}"/></li>
                                                 </c:forEach>
                                         </ul>

@@ -25,9 +25,9 @@
                                     ${message}
                                     <br>
                                     <ul class="pager">
-                                        <li class="previous"><a href="${pageContext.request.contextPath}/order/${dt.minusMonths(1).withDayOfMonth(1).toString("dd.MM.yyyy")}">
+                                        <li class="previous"><a href="${pageContext.request.contextPath}/order/show/${dt.minusMonths(1).withDayOfMonth(1).toString("dd.MM.yyyy")}">
                                                 &larr;  ${kuukausi[dt.minusMonths(1).getMonthOfYear()]}</a></li>
-                                        <li class="next"><a href="${pageContext.request.contextPath}/order/${dt.plusMonths(1).withDayOfMonth(1).toString("dd.MM.yyyy")}">
+                                        <li class="next"><a href="${pageContext.request.contextPath}/order/show/${dt.plusMonths(1).withDayOfMonth(1).toString("dd.MM.yyyy")}">
                                                 ${kuukausi[dt.plusMonths(1).getMonthOfYear()]}  &rarr;</a></li>
                                     </ul>
                                 </td>

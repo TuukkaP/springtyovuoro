@@ -10,7 +10,7 @@
         <title>Muokkaa tilausta</title>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
         <link href="${pageContext.request.contextPath}/resources/css/datepicker.css" rel="stylesheet">
-        <script>
+       <script>
             $(document).ready(function() {
                 $("#date").datepicker();
                 $('#place\\.id').change(function() {
@@ -27,11 +27,15 @@
                         .on('changeDate', function(ev) {
                             $("#panel-title").empty().append("Vuorot " + $("#date").val());
                             $("#todaysOrdersTableBody").empty();
-                            $.getJSON('${pageContext.request.contextPath}/admin/order/' + $("#date").val() + '/orders.json', function(data) {
-                                if ($.isEmptyObject(data) === true) {
-                                    $("#todaysOrdersTableBody").append("<tr><td colspan='3'>Päivälle ei ole muita vuoroja</td></tr>");
-                                } else {
+                            $.getJSON('${pageContext.request.contextPath}/admin/order/show/' + $("#date").val() + '/orders.json', function(data) {
+                                if ($.isEmptyObject(data)) {
+                                    $("#todaysOrdersTableBody").append("<tr><td colspan='3'>Ei vuoroja tälle päivälle.</td></tr>");
+                                }
+                                else {
                                     $.each(data, function(k, v) {
+                                        if (v.user == null) {
+                                            v.user = "Ei tekijää";
+                                        }
                                         $("#todaysOrdersTableBody").append("<tr><td>" + v.user + "</td><td>" + v.place + "</td><td>" + v.time + "</td></tr>");
                                     });
                                 }
@@ -85,7 +89,7 @@
                 </tr>
             </thead>
             <tbody>
-                <f:form action="${pageContext.request.contextPath}/admin/order/edit/${order.getId()}" method="PUT" modelAttribute="order">
+                <f:form action="${pageContext.request.contextPath}/admin/order/${order.getId()}" method="PUT" modelAttribute="order">
                     <f:hidden path="id" />
                     <tr>
                         <td>
@@ -102,12 +106,14 @@
                                 <f:options items="${vacantUsers}" itemValue="id"/>
                             </f:select>
                         </td>
-                        <td>
-                            <f:input path="order_start" cssClass="input-block-level"></f:input>
-                            </td>
                             <td>
-                            <f:input path="order_end" cssClass="input-block-level"></f:input>
-                            </td>
+                                <f:input path="order_start" cssClass="input-block-level" placeholder="Esim. 09:45"></f:input>
+                                <f:errors path="order_start" cssClass="alert alert-danger" element="div" />
+                                </td>
+                                <td>
+                                <f:input path="order_end" cssClass="input-block-level" placeholder="Esim. 17:15"></f:input>
+                                <f:errors path="order_end" cssClass="alert alert-danger" element="div" />
+                                </td>
                             <td>
                                 <input type="submit" value="Muokkaa" class="btn btn-primary" /></f:form> 
                             </td>

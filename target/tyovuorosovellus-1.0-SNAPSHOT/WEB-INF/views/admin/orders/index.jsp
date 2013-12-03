@@ -25,9 +25,9 @@
                                     ${message}
 
                                     <ul class="pager">
-                                        <li class="previous"><a href="${pageContext.request.contextPath}${adminUrl}/${dt.minusMonths(1).withDayOfMonth(1).toString("dd.MM.yyyy")}">
+                                        <li class="previous"><a href="${pageContext.request.contextPath}${adminUrl}/show/${dt.minusMonths(1).withDayOfMonth(1).toString("dd.MM.yyyy")}">
                                                 &larr;  ${kuukausi[dt.minusMonths(1).getMonthOfYear()]}</a></li>
-                                        <li class="next"><a href="${pageContext.request.contextPath}${adminUrl}/${dt.plusMonths(1).withDayOfMonth(1).toString("dd.MM.yyyy")}">
+                                        <li class="next"><a href="${pageContext.request.contextPath}${adminUrl}/show/${dt.plusMonths(1).withDayOfMonth(1).toString("dd.MM.yyyy")}">
                                                 ${kuukausi[dt.plusMonths(1).getMonthOfYear()]}  &rarr;</a></li>
                                     </ul>
                                 </td>
@@ -68,8 +68,8 @@
                                                     </td>
                                                 </c:if>    
                                                             <td onclick="document.location = '${pageContext.request.contextPath}/place/${order.place.name}';"><a href="${pageContext.request.contextPath}/place/${order.place.name}">${order.place.name}</a></td>
-                                                <td onclick="document.location = '${pageContext.request.contextPath}${adminUrl}/edit/${order.id}';">
-                                                    <a href="${pageContext.request.contextPath}${adminUrl}/edit/${order.id}">
+                                                <td onclick="document.location = '${pageContext.request.contextPath}${adminUrl}/${order.id}';">
+                                                    <a href="${pageContext.request.contextPath}${adminUrl}/${order.id}">
                                                     <c:choose>
                                                         <c:when test="${order.user.firstname == null && order.user.lastname == null}">
                                                             Ei tekijää
@@ -84,7 +84,7 @@
                                                     </c:forEach>
                                                 </td>
                                                 <td>
-                                                    <a href="${pageContext.request.contextPath}${adminUrl}/edit/${order.id}">${order.order_start.toString("HH:mm")}-${order.order_end.toString("HH:mm")}</a>
+                                                    <a href="${pageContext.request.contextPath}${adminUrl}/${order.id}">${order.order_start.toString("HH:mm")}-${order.order_end.toString("HH:mm")}</a>
                                                 </td>
                                                 <td>
                                                     <f:form action="${pageContext.request.contextPath}/admin/order/delete" method="DELETE" onsubmit="return confirm('Haluatko varmasti poistaa vuoron \n ${order.date.toString('dd.MM.yyyy')}, ${order.place.name}, ${order.user.username}, ${order.order_start.toString('HH:mm')}-${order.order_end.toString('HH:mm')}?');">

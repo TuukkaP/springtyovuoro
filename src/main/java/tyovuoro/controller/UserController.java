@@ -38,7 +38,7 @@ public class UserController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/user/{username}", method = RequestMethod.PUT)
-    public String updateUser(@RequestParam("role.id") int id, @ModelAttribute @Valid User user, BindingResult result, RedirectAttributes redirectAttributes,  ModelMap model) {
+    public String updateUser(@RequestParam("role.id") int id, @ModelAttribute @Valid User user, BindingResult result, RedirectAttributes redirectAttributes) {
         user.setRole(roleSer.getRole(id));
         if (result.hasErrors()) {
             return "user/index";
@@ -66,9 +66,10 @@ public class UserController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/user/{username}", method = RequestMethod.PUT)
-    public String adminUpdateUser(@RequestParam("role.id") int id, @ModelAttribute @Valid User user, BindingResult result, ModelMap model) {
+    public String adminUpdateUser(@PathVariable String username, @RequestParam("role.id") int id, @ModelAttribute @Valid User user, BindingResult result, ModelMap model) {
         user.setRole(roleSer.getRole(id));
         if (result.hasErrors()) {
+            model.addAttribute("user.bannedPlaces", userSer.getUser(username).getBannedPlaces());
             model.addAttribute("roleList", roleSer.getAllRoles());
             return "admin/users/edit";
         }

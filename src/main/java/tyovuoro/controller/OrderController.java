@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tyovuoro.model.Order;
+import tyovuoro.model.Place;
 import tyovuoro.service.OrderService;
 import tyovuoro.service.PlaceService;
 import tyovuoro.service.UserService;
@@ -56,7 +57,7 @@ public class OrderController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = "/order/{day}.{month}.{year}", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/show/{day}.{month}.{year}", method = RequestMethod.GET)
     public String userShowFromDate(@PathVariable int day, @PathVariable int month, @PathVariable int year, ModelMap model) {
         DateTime dt = new DateTime(year, month, day, 0, 0);
         DateTime first = new DateTime(dt).withDayOfMonth(1);
@@ -82,7 +83,7 @@ public class OrderController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/admin/order/{day}.{month}.{year}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/order/show/{day}.{month}.{year}", method = RequestMethod.GET)
     public String adminShowFromDate(@PathVariable int day, @PathVariable int month, @PathVariable int year, ModelMap model) {
         DateTime dt = new DateTime(year, month, day, 0, 0);
         DateTime first = new DateTime(dt).withDayOfMonth(1);
@@ -95,7 +96,7 @@ public class OrderController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/admin/order/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/order/{id}", method = RequestMethod.GET)
     public String adminEditOrder(@PathVariable int id, ModelMap model) {
         Order order = orderSer.getOrderId(id);
         model.addAttribute("order", order);
@@ -106,7 +107,7 @@ public class OrderController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/admin/order/{day}.{month}.{year}/orders.json", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/order/show/{day}.{month}.{year}/orders.json", method = RequestMethod.GET)
     public @ResponseBody
     List getJsonOrdersForDate(@PathVariable int day, @PathVariable int month, @PathVariable int year) {
         List<Order> orderList = orderSer.getOrdersDate(new DateTime(year, month, day, 0, 0));
@@ -114,7 +115,11 @@ public class OrderController {
         for (Order order : orderList) {
             HashMap<String, String> temp = new HashMap<String, String>();
             temp.put("id", order.getId().toString());
-            temp.put("user", order.getUser().getFirstname() + ", " + order.getUser().getLastname());
+            if (order.getUser() == null) {
+                temp.put("user", null);
+            } else {
+                temp.put("user", order.getUser().getFirstname() + ", " + order.getUser().getLastname());
+            }
             temp.put("place", order.getPlace().getName());
             temp.put("date", order.getDate().toString("dd.MM.yyyy"));
             temp.put("time", order.getOrder_start().toString("HH:mm") + "-" + order.getOrder_end().toString("HH:mm"));
@@ -124,20 +129,21 @@ public class OrderController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/admin/order/edit/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/admin/order/{id}", method = RequestMethod.PUT)
     public String adminUpdateOrder(@PathVariable int id, @ModelAttribute @Valid Order order, BindingResult bind, ModelMap model, RedirectAttributes redirectAttributes) {
         if (bind.hasErrors()) {
-            model.addAttribute("OrdersForToday", orderSer.getOrdersDate(order.getDate().toDateTime()));
+            Order o = orderSer.getOrderId(id);
+            model.addAttribute("OrdersForToday", orderSer.getOrdersDate(o.getDate().toDateTime()));
             model.addAttribute("placeList", placeSer.getAllPlaces());
-            model.addAttribute("vacantUsers", placeSer.getValidUsers(order.getPlace().getName()));
-            return "admin/orders/edit/" + id;
+            model.addAttribute("vacantUsers", placeSer.getValidUsers(o.getPlace().getName()));
+            return "admin/orders/edit";
         }
         if (order.getUser().getId() == 0) {
             order.setUser(null);
         }
         orderSer.editOrder(order);
-        redirectAttributes.addFlashAttribute("message", "Vuoroa muokattu " + order);
-        return "redirect:/admin/order/" + order.getDate().toString("dd.MM.yyyy");
+        redirectAttributes.addFlashAttribute("message", "Vuoroa muokattu " + order.getDate().toString("dd.MM.yyyy"));
+        return "redirect:/admin/order/show/" + order.getDate().toString("dd.MM.yyyy");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -149,34 +155,34 @@ public class OrderController {
         model.addAttribute("order", order);
         model.addAttribute("OrdersForToday", orderSer.getOrdersDate(dt));
         model.addAttribute("placeList", placeSer.getAllPlaces());
-        model.addAttribute("vacantUsers", userSer.getAllUsers());
+        model.addAttribute("vacantUsers", placeSer.getValidUsers(((Place) placeSer.getAllPlaces().get(0)).getName()));
         return "admin/orders/create";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/order/create/{day}.{month}.{year}", method = RequestMethod.POST)
-    public String adminSaveOrder(@PathVariable int day, @PathVariable int month, @PathVariable int year, @ModelAttribute @Valid Order order, BindingResult bind, ModelMap model, RedirectAttributes redirectAttributes) {
+    public String adminSaveOrder(@PathVariable int day, @PathVariable int month, @PathVariable int year, @ModelAttribute @Valid Order order, BindingResult bind, @RequestParam("place.id") int place_id, ModelMap model, RedirectAttributes redirectAttributes) {
         if (bind.hasErrors()) {
-            DateTime dt = new DateTime(year, month, day, 0, 0);
-            model.addAttribute("OrdersForToday", orderSer.getOrdersDate(dt));
+            model.addAttribute("OrdersForToday", orderSer.getOrdersDate(new DateTime(year, month, day, 0, 0)));
             model.addAttribute("placeList", placeSer.getAllPlaces());
-            model.addAttribute("vacantUsers", orderSer.getVacantUsersForDate(dt));
+            model.addAttribute("vacantUsers", placeSer.getValidUsers(placeSer.getPlace(place_id).getName()));
             return "admin/orders/create";
         }
         if (order.getUser().getId() == 0) {
             order.setUser(null);
         }
         orderSer.addOrder(order);
-        redirectAttributes.addFlashAttribute("message", "Vuoro lisätty " + order);
-        return "redirect:/admin/order/" + order.getDate().toString("dd.MM.yyyy");
+        redirectAttributes.addFlashAttribute("message", "Vuoro lisätty " + order.getDate().toString("dd.MM.yyyy"));
+        return "redirect:/admin/order/show/" + order.getDate().toString("dd.MM.yyyy");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/order/delete", method = RequestMethod.DELETE)
     public String adminDeleteOrder(@RequestParam("id") int id, RedirectAttributes redirectAttributes) {
+        DateTime dt = orderSer.getOrderId(id).getDate().toDateTime();
         orderSer.deleteOrder(id);
         redirectAttributes.addFlashAttribute("message", "Vuoro poistettu!");
-        return "redirect:/admin/order/";
+        return "redirect:/admin/order/show/" + dt.toString("dd.MM.yyyy");
     }
 
     private Map listFormation(DateTime dt, List<Order> orders) {

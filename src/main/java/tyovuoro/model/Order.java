@@ -121,6 +121,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return place.getName() + " " + order_start.toString("HH:mm") + "-" + order_end.toString("HH:mm");
+        return date.toString("dd.MM.yyyy") +" " + place.getName() + ", " + user.getFirstname() +" " + user.getLastname()+ ", " + order_start.toString("HH:mm") + "-" + order_end.toString("HH:mm");
     }
 }

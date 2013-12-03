@@ -27,7 +27,7 @@
                         .on('changeDate', function(ev) {
                             $("#panel-title").empty().append("Vuorot " + $("#date").val());
                             $("#todaysOrdersTableBody").empty();
-                            $.getJSON('${pageContext.request.contextPath}/admin/order/' + $("#date").val() + '/orders.json', function(data) {
+                            $.getJSON('${pageContext.request.contextPath}/admin/order/show/' + $("#date").val() + '/orders.json', function(data) {
                                 if ($.isEmptyObject(data)) {
                                     $("#todaysOrdersTableBody").append("<tr><td colspan='3'>Ei vuoroja tälle päivälle.</td></tr>");
                                 }
@@ -121,9 +121,5 @@
                 </tbody>
             </table>
         </div>
-        <!--<script src="${pageContext.request.contextPath}/resources/js/fetch_users.js"></script>-->
-    <content tag=”script”>
-
-    </content>
 </body>
 </html>
