@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <users id="1" username="user1" password="pass1" firstname="First1" lastname="Last1" email="first1@email.com" address="address1"/>
+    <users id="2" username="user2" password="pass2" firstname="First2" lastname="Last2" email="first2@email.com" address="address2"/>
+    <users id="3" username="admin" password="pass3" firstname="First3" lastname="Last3" email="first3@email.com" address="address3"/>
+    <roles id="0" role_name="moderator"/>
+    <roles id="1" role_name="admin"/>
+    <roles id="2" role_name="user"/>
+    <roles id="3" role_name="pharmacy"/>
+    <roles id="4" role_name="orderadmin"/>
+    <places id="1" name="paikka" phone="020202" contact="kontakti" address="osoite" info="info"/>
+    <user_roles user_id="1" role_id="2"/>
+    <user_roles user_id="2" role_id="2"/>
+    <user_roles user_id="3" role_id="1"/>
+    <banned_users place_id="1" user_id="2"/>
+    <orders id="1" timestamp="2013-11-21 18:48:00" place_id="1" user_id="1" date="2013-04-03" order_start="2013-04-03 09:00:00" order_end="2013-04-03 17:00:00"/>
+</dataset>

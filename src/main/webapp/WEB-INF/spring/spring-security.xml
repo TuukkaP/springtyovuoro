@@ -69,7 +69,8 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd
         <beans:property name="hierarchy">
             <beans:value>
                 ROLE_MODERATOR > ROLE_ADMIN
-                ROLE_ADMIN > ROLE_USER
+                ROLE_ADMIN > ROLE_ORDERADMIN
+                ROLE_ORDERADMIN > ROLE_USER
                 ROLE_USER > ROLE_PHARMACY
             </beans:value>
         </beans:property>
