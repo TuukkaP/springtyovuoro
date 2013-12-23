@@ -16,6 +16,9 @@
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <c:set var="admin" value="true" scope="page" />
             </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_ORDERADMIN')">
+                <c:set var="orderAdmin" value="true" scope="page" />
+            </sec:authorize>
             <decorator:usePage id="thePage" />
             <% String pageName = thePage.getProperty("meta.currentPage");%>
 
@@ -37,21 +40,32 @@
                                 </sec:authorize>
                                 <c:choose>
                                     <c:when test="${admin == null}">
-                                        <sec:authorize access="hasRole('ROLE_USER')" >
+                                        <sec:authorize access="hasRole('ROLE_PHARMACY')" >
                                         <li <%if (pageName.equals("user")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/user/<sec:authentication property="principal.username"/>">Käyttäjätiedot</a></li>
-                                        <li <%if (pageName.equals("order")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/order">Tilaukset</a></li>
                                         </sec:authorize>
+                                        <c:choose>
+                                            <c:when test="${orderAdmin == null}">
+                                                <sec:authorize access="hasRole('ROLE_PHARMACY')" >
+                                                <li <%if (pageName.equals("order")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/order">Tilaukset</a></li>
+                                                </sec:authorize>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <sec:authorize access="hasRole('ROLE_ORDERADMIN')">
+                                                <li <%if (pageName.equals("order")) {%>class="active"<% }%>><a href="${pageContext.request.contextPath}/admin/order">Tilaukset</a></li>
+                                                </sec:authorize>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:when>
                                     <c:otherwise>
                                         <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                    <li <%if (pageName.equals("user")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/admin/user">Käyttäjät</a></li>
-                                    <li <%if (pageName.equals("place")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/admin/place">Paikat</a></li>
-                                    <li <%if (pageName.equals("info")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/info">Info</a></li>
-                                    <li <%if (pageName.equals("order")) {%>class="active"<% }%>><a href="${pageContext.request.contextPath}/admin/order">Tilaukset</a></li>                    
+                                        <li <%if (pageName.equals("user")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/admin/user">Käyttäjät</a></li>
+                                        <li <%if (pageName.equals("place")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/admin/place">Paikat</a></li>
+                                        <li <%if (pageName.equals("info")) {%>class="active"<% } %>><a href="${pageContext.request.contextPath}/info">Info</a></li>
+                                        <li <%if (pageName.equals("order")) {%>class="active"<% }%>><a href="${pageContext.request.contextPath}/admin/order">Tilaukset</a></li>                    
                                         </sec:authorize></c:otherwise>
                                 </c:choose>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right"><li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Kirjaudu ulos</a></li></ul>  
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right"><li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Kirjaudu ulos</a></li></ul>  
                     </div>
                 </div>
             </div>

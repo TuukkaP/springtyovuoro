@@ -111,4 +111,16 @@ public class OrderDAOImpl implements OrderDAO {
         return sessionFactory.getCurrentSession().createQuery("from Order o where o.date between :start and :end  and o.user = :user order by o.date")
                 .setParameter("start", from.toLocalDateTime()).setParameter("end", to.toLocalDateTime()).setParameter("user", user).list();
     }
+
+    @Override
+    public List getUnconfirmedOrders(User user, DateTime from) {
+        return sessionFactory.getCurrentSession().createQuery("from Order o where o.date >= :from and o.user = :user and o.confirmation is false order by o.date ")
+                .setParameter("from", from.toLocalDateTime()).setParameter("user", user).setMaxResults(50).list();
+    }
+
+    @Override
+    public List getConfirmedOrders(User user, DateTime from) {
+        return sessionFactory.getCurrentSession().createQuery("from Order o where o.date >= :from and o.user = :user and o.confirmation is true order by o.date ")
+                .setParameter("from", from.toLocalDateTime()).setParameter("user", user).setMaxResults(50).list();
+    }
 }

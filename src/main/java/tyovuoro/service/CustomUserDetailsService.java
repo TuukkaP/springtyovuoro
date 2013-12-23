@@ -30,7 +30,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        System.out.println("");
         tyovuoro.model.User domainUser = userS.getUser(username);
 
         boolean enabled = true;

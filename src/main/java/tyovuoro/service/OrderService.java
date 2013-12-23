@@ -34,4 +34,8 @@ public interface OrderService {
 
     public List getOrdersUser(User user, DateTime from, DateTime to);
 
+    public List getUnconfirmedOrders(User user, DateTime from);
+
+    public List getConfirmedOrders(User user, DateTime from);
+
 }

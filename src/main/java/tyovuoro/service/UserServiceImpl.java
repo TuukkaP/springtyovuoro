@@ -51,13 +51,13 @@ public class UserServiceImpl implements UserService {
 //        }
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ORDERADMIN', 'ROLE_PHARMACY', 'ROLE_ADMIN')")
     @Override
     public List getAllUsers() {
         return userDAO.getAllUsers();
     }
 
-    @PreAuthorize("authentication or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @Override
     public User getUser(int id) {
         return userDAO.getUser(id);

@@ -25,6 +25,7 @@
                                 <th>Sukunimi</th>
                                 <th>Osoite</th>
                                 <th>Email</th>
+                                <th>Paikka</th>
                                 <th>Käyttöoikeus</th>
                                 <th>Korjaa</th>
                                 <th>Poista</th>
@@ -38,6 +39,7 @@
                                     <td>${user.lastname}</td>
                                     <td>${user.address}</td>
                                     <td>${user.email}</td>
+                                    <td>${user.organization.name}</td>
                                     <td><font style="text-transform: capitalize">${fn:toLowerCase(user.role)}</font></td>
                                     <td> 
                                         <form action="${pageContext.request.contextPath}/admin/user/${user.username}">

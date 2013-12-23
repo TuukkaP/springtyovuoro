@@ -41,6 +41,8 @@ public class Place {
     private Set<User> bannedUsers;
     @OneToMany(mappedBy = "place", cascade = CascadeType.PERSIST)
     private Set<Order> orders;
+    @OneToMany(mappedBy = "organization", cascade = CascadeType.PERSIST)
+    private Set<User> organization_users;
 
     public Place() {
     }
@@ -107,6 +109,14 @@ public class Place {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    public Set<User> getOrganization_users() {
+        return organization_users;
+    }
+
+    public void setOrganization_users(Set<User> organization_users) {
+        this.organization_users = organization_users;
     }
 
 }

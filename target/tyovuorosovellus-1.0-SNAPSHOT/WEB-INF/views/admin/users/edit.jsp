@@ -25,6 +25,7 @@
                                 <th>Osoite</th>
                                 <th>Email</th>
                                 <th>Käyttöoikeus</th>
+                                <th>Paikan käyttäjä</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -61,7 +62,13 @@
                                     </td>
                                     <td>
                                         <f:select path="role.id" cssClass="form-control">
-                                            <f:options items="${roleList}" itemLabel="role_name" itemValue="id"/>
+                                            <f:options items="${roleList}"  itemValue="id"/>
+                                        </f:select>                     
+                                    </td>
+                                    <td>
+                                        <f:select path="organization.id" cssClass="form-control">
+                                            <f:option value="0">Ei paikkaa</f:option>
+                                            <f:options items="${placeList}" itemLabel="name" itemValue="id"/>
                                         </f:select>                     
                                     </td>
                                     <td>

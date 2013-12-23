@@ -66,7 +66,7 @@
                                     <td>
                                         <select name="assigned_role" value="options" class="form-control">
                                             <c:forEach items="${roleList}" var="role">
-                                                <option value="${role.id}">${role.role_name}</option>
+                                                <option value="${role.id}">${role}</option>
                                             </c:forEach>
                                         </select>
                                         <f:errors path="role" cssClass="alert alert-danger" element="div"  />

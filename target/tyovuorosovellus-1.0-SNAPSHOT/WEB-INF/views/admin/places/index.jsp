@@ -22,6 +22,7 @@
                             <tr>
                                 <th>Nimi</th>
                                 <th>Yhteyshenkilö</th>
+                                <th>Käyttäjät</th>
                                 <th>Puhelinnumero</th>
                                 <th>Osoite</th>
                                 <th>Info</th>
@@ -34,6 +35,13 @@
                                 <tr>
                                     <td>${place.name}</td>
                                     <td>${place.contact}</td>
+                                    <td>
+                                        <c:if test="${place.organization_users != null}">
+                                            <c:forEach items="${place.organization_users}" var="user">
+                                                ${user.firstname} ${user.lastname} <br>
+                                            </c:forEach>
+                                        </c:if>
+                                        </td>
                                     <td>${place.phone}</td>
                                     <td>${place.address}</td>
                                     <td>${place.info}</td>

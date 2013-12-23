@@ -2,6 +2,7 @@ package tyovuoro.model;
 
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +18,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -26,9 +29,11 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
-    @NotBlank @Length(min=3, max=15)
+    @NotBlank
+    @Length(min = 3, max = 15)
     private String username;
-    @NotBlank @Length(min=8)
+    @NotBlank
+    @Length(min = 8)
     private String password;
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_roles",
@@ -37,13 +42,16 @@ public class User {
             inverseJoinColumns = {
                 @JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Role role;
-    @NotBlank @Length(min=2, max=25)
+    @NotBlank
+    @Length(min = 2, max = 25)
     private String firstname;
-    @NotBlank @Length(min=2, max=25)
+    @NotBlank
+    @Length(min = 2, max = 25)
     private String lastname;
-    @NotBlank @Email
+    @NotBlank
+    @Email
     private String email;
-    @Length(max=50)
+    @Length(max = 50)
     private String address;
     @ManyToMany(mappedBy = "bannedUsers")
 //    @JoinTable(name = "banned_users",
@@ -54,6 +62,10 @@ public class User {
     private Set<Place> bannedPlaces;
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private Set<Order> orders;
+    @NotFound(action = NotFoundAction.IGNORE)
+    @ManyToOne
+    @JoinColumn(name = "organization_id", nullable = true)
+    private Place organization;
 
     public Integer getId() {
         return id;
@@ -137,6 +149,16 @@ public class User {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    @JsonIgnore
+    public Place getOrganization() {
+        return organization;
+    }
+
+    @JsonIgnore
+    public void setOrganization(Place organization) {
+        this.organization = organization;
     }
 
     @Override

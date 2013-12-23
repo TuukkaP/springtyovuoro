@@ -66,8 +66,13 @@ public class UserController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/user/{username}", method = RequestMethod.PUT)
-    public String adminUpdateUser(@PathVariable String username, @RequestParam("role.id") int id, @ModelAttribute @Valid User user, BindingResult result, ModelMap model) {
+    public String adminUpdateUser(@PathVariable String username, @RequestParam("role.id") int id,@RequestParam("organization.id") int orgId, @ModelAttribute @Valid User user, BindingResult result, ModelMap model) {
         user.setRole(roleSer.getRole(id));
+        if (orgId == 0) {
+            user.setOrganization(null);
+        } else {
+            user.setOrganization(placeSer.getPlace(orgId));
+        }
         if (result.hasErrors()) {
             model.addAttribute("user.bannedPlaces", userSer.getUser(username).getBannedPlaces());
             model.addAttribute("roleList", roleSer.getAllRoles());
@@ -94,13 +99,13 @@ public class UserController {
             return "admin/users/create";
         }
         userSer.saveUser(user);
-        return "redirect:/user/";
+        return "redirect:/admin/user/";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/admin/user/delete", method = RequestMethod.DELETE)
     public String deleteUser(@RequestParam("id") int id) {
         userSer.deleteUser(id);
-        return "redirect:/user/";
+        return "redirect:/admin/user/";
     }
 }

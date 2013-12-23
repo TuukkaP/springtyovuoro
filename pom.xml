@@ -312,6 +312,11 @@
             <id>glassfish-extras-repository</id>
             <url>http://download.java.net/maven/glassfish/org/glassfish/extras</url>
         </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <name>Spring Portfolio Milestone Repository</name>
+            <url>http://repo.springsource.org/milestone/</url>
+        </repository>
     </repositories>
     
     <build>

@@ -52,6 +52,9 @@ public class Order {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     @DateTimeFormat(pattern = "HH:mm")
     private LocalDateTime order_end;
+    @Column
+    @NotNull
+    private boolean confirmation;
 
     public Integer getId() {
         return id;
@@ -121,6 +124,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return date.toString("dd.MM.yyyy") +" " + place.getName() + ", " + user.getFirstname() +" " + user.getLastname()+ ", " + order_start.toString("HH:mm") + "-" + order_end.toString("HH:mm");
+        return date.toString("dd.MM.yyyy") + " " + place.getName() + ", " + user.getFirstname() + " " + user.getLastname() + ", " + order_start.toString("HH:mm") + "-" + order_end.toString("HH:mm");
     }
 }

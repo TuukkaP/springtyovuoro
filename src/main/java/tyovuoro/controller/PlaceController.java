@@ -103,7 +103,7 @@ public class PlaceController {
         return "redirect:/admin/place/";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ORDERADMIN', 'ROLE_ADMIN')")
     @RequestMapping(value = "/admin/place/{name}/users.json", method = RequestMethod.GET)
     public @ResponseBody
     List<User> getPlacesValidUsers(@PathVariable String name) {

@@ -16,7 +16,7 @@ public class Role {
     private Integer id;
 
     private String role_name;
-    @OneToMany(mappedBy="role")
+    @OneToMany(mappedBy = "role")
 //    @JoinTable(name = "user_roles",
 //            joinColumns = {
 //                @JoinColumn(name = "role_id", referencedColumnName = "id")},
@@ -26,8 +26,8 @@ public class Role {
 
     public int getId() {
         return id;
-    }    
-    
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -50,9 +50,18 @@ public class Role {
 
     @Override
     public String toString() {
+        if (id == 0) {
+            return "Moderaattori";
+        } else if (id == 1) {
+            return "Admin";
+        } else if (id == 2) {
+            return "Käyttäjä";
+        } else if (id == 3) {
+            return "Apteekki";
+        } else if (id == 4) {
+            return "Vuoronkäsittelijä";
+        }
         return id + " : " + role_name;
     }
-    
-    
 
 }

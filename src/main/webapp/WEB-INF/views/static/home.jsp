@@ -1,6 +1,7 @@
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,6 +11,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="currentPage" content="home"/>
         <title>Kotisivu</title>
+        <script>
+            $(document).ready(function() {
+                $('.confirmation').click(
+                        function() {
+                            if ($(this).hasClass('btn-danger')) {
+                                $(this).removeClass("btn-danger").addClass("btn-success").text("Vahvistettu").val(true);
+                            } else {
+                                $(this).removeClass("btn-success").addClass("btn-danger").val(false).text('Vahvista');
+                            }
+                        });
+            });
+        </script>
     </head>
     <body>
         <h1>Tervetuloa ${username} </h1>
@@ -27,7 +40,7 @@
             </ul>
             <blockquote>
                 <p>Tuntien laskeminen, DateTime erotus lopetus - aloitus, solun aika kenttään data-w(weeknumber)hr(weekday)=8h, jquerylla laske viikon tunnit
-                   laske kaikki yhteen kk. tunnit.
+                    laske kaikki yhteen kk. tunnit.
                 </p>
             </blockquote>
 
@@ -36,7 +49,7 @@
             <ol>            
                 <li><strong>Testit (ainakin aluksi yhdelle controllerille)</strong></li>
                 <li>tee orderAdmin-rooli, joka voi muokata ja luoda vuoroja muttei paikkoja tai käyttäjiä</li>
-                <li>Apteekin näkymä täytyy työstää</li>
+                <li>Apteekin näkymä täytyy työstää, user yhdistetään paikkaan organization_id, jolloin voidaan roolin ollessa pharmacy hakea useriin kohdistettu paikka ja paikan mukaiset vuorot.</li>
                 <li>Apteekki voi luoda vuoron ilman tekijää</li>
                 <li>Tekijä voi kuitata omat työvuoronsa</li>
                 <li>Järjestelmä muistuttaa tekijää vuorojen kuittaamisesta maililla</li>
@@ -69,9 +82,11 @@
         </sec:authorize>
         <sec:authorize access="hasRole('ROLE_USER')">
             User<br>
+            <%@ include file="../util/vuorojenvahvistus.jsp" %> 
         </sec:authorize>
         <sec:authorize access="hasRole('ROLE_PHARMACY')">
             Pharmacy<br>
         </sec:authorize>
+
     </body>
 </html>

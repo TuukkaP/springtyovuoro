@@ -1,6 +1,5 @@
 package tyovuoro.DAO;
 
-import java.util.Calendar;
 import java.util.List;
 import org.joda.time.DateTime;
 import tyovuoro.model.Order;
@@ -33,5 +32,9 @@ public interface OrderDAO {
     public List getVacantUsersForOrder(Order order);
     
     public List getVacantUsersForDate(DateTime date);
+    
+    public List getUnconfirmedOrders(User user, DateTime from);
+
+    public List getConfirmedOrders(User user, DateTime from);
 
 }

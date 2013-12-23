@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderDAO orderDAO;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ORDERADMIN', 'ROLE_PHARMACY', 'ROLE_ADMIN')")
     @Override
     public Order getOrderId(int id) {
         return orderDAO.getOrderId(id);
@@ -58,19 +58,19 @@ public class OrderServiceImpl implements OrderService {
         return orderDAO.getOrdersPlaceAndDay(places, from.withTimeAtStartOfDay(), to.withTimeAtStartOfDay());
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ORDERADMIN', 'ROLE_PHARMACY', 'ROLE_ADMIN')")
     @Override
     public void editOrder(Order order) {
         orderDAO.editOrder(order);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ORDERADMIN', 'ROLE_PHARMACY', 'ROLE_ADMIN')")
     @Override
     public void addOrder(Order order) {
         orderDAO.addOrder(order);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ORDERADMIN', 'ROLE_PHARMACY', 'ROLE_ADMIN')")
     @Override
     public void deleteOrder(int id) {
         orderDAO.deleteOrder(id);
@@ -98,5 +98,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List getOrdersUser(User user, DateTime from, DateTime to) {
         return orderDAO.getOrdersUser(user, from.withTimeAtStartOfDay(), to.withTimeAtStartOfDay());
+    }
+
+    @Override
+    public List getUnconfirmedOrders(User user, DateTime from) {
+        return orderDAO.getUnconfirmedOrders(user, from);
+    }
+
+    @Override
+    public List getConfirmedOrders(User user, DateTime from) {
+        return orderDAO.getUnconfirmedOrders(user, from);
     }
 }
