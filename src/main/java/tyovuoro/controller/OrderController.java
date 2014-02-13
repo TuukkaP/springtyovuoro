@@ -140,6 +140,32 @@ public class OrderController {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_PHARMACY', 'ROLE_ORDERADMIN', 'ROLE_ADMIN')")
+    @RequestMapping(value = "/order/confirm", method = RequestMethod.POST)
+    public String confirmOrders(@RequestParam("confirm") List<Integer> orderID) {
+        User user = userSer.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        for (int i = 0; i < 10; i++) {
+            System.out.println("");
+        }
+        System.out.println(user.getId());
+        for (int id : orderID) {
+            for (int i = 0; i < 10; i++) {
+                System.out.println("");
+            }
+            System.out.println(id);
+            Order order = orderSer.getOrderId(id);
+            if (order.getUser().getId() == user.getId()) {
+                order.setConfirmation(true);
+                for (int i = 0; i < 10; i++) {
+                    System.out.println("");
+                }
+                System.out.println(order);
+                orderSer.editOrder(order);
+            }
+        }
+        return "redirect:/";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_PHARMACY', 'ROLE_ORDERADMIN', 'ROLE_ADMIN')")
     @RequestMapping(value = "/admin/order/{id}", method = RequestMethod.PUT)
     public String adminUpdateOrder(@PathVariable int id, @ModelAttribute @Valid Order order, BindingResult bind, ModelMap model, RedirectAttributes redirectAttributes) {
         if (bind.hasErrors()) {
@@ -152,6 +178,7 @@ public class OrderController {
         if (order.getUser().getId() == 0) {
             order.setUser(null);
         }
+        order.setConfirmation(false);
         orderSer.editOrder(order);
         redirectAttributes.addFlashAttribute("message", "Vuoroa muokattu " + order.getDate().toString("dd.MM.yyyy"));
         return "redirect:/admin/order/show/" + order.getDate().toString("dd.MM.yyyy");

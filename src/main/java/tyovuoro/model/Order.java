@@ -122,6 +122,14 @@ public class Order {
         this.order_end = order_end;
     }
 
+    public boolean isConfirmation() {
+        return confirmation;
+    }
+
+    public void setConfirmation(boolean confirmation) {
+        this.confirmation = confirmation;
+    }
+
     @Override
     public String toString() {
         return date.toString("dd.MM.yyyy") + " " + place.getName() + ", " + user.getFirstname() + " " + user.getLastname() + ", " + order_start.toString("HH:mm") + "-" + order_end.toString("HH:mm");

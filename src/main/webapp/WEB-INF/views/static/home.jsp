@@ -26,7 +26,10 @@
     </head>
     <body>
         <h1>Tervetuloa ${username} </h1>
-        <div class="col-md-6">
+        <div class="col-md-8">
+            <c:if test="${unconfirmedOrders.isEmpty() == false}">
+            <%@ include file="../util/vuorojenvahvistus.jsp" %> 
+            </c:if>
             <h3>Linkkejä</h3>
             <ul>
                 <li><a href="https://github.com/TuukkaP/springtyovuoro">https://github.com/TuukkaP/springtyovuoro</a></li>
@@ -44,7 +47,8 @@
                 </p>
             </blockquote>
 
-        </div><div class="col-md-6">
+        </div><div class="col-md-4">
+            
             <h3>Feature backlog</h3>
             <ol>            
                 <li><strong>Testit (ainakin aluksi yhdelle controllerille)</strong></li>
@@ -82,7 +86,7 @@
         </sec:authorize>
         <sec:authorize access="hasRole('ROLE_USER')">
             User<br>
-            <%@ include file="../util/vuorojenvahvistus.jsp" %> 
+            
         </sec:authorize>
         <sec:authorize access="hasRole('ROLE_PHARMACY')">
             Pharmacy<br>
